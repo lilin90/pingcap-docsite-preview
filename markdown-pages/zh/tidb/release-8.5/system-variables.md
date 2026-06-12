@@ -1359,8 +1359,6 @@ mysql> SELECT job_info FROM mysql.analyze_jobs ORDER BY end_time DESC LIMIT 1;
 
     - 乐观事务模型下将 `tidb_constraint_check_in_place` 设置为 `OFF`：
 
-        {{< copyable "sql" >}}
-
         ```sql
         create table t (i int key);
         insert into t values (1);
@@ -1372,8 +1370,6 @@ mysql> SELECT job_info FROM mysql.analyze_jobs ORDER BY end_time DESC LIMIT 1;
         Query OK, 1 row affected
         ```
 
-        {{< copyable "sql" >}}
-
         ```sql
         tidb> commit; -- 事务提交时才检查
         ```
@@ -1383,8 +1379,6 @@ mysql> SELECT job_info FROM mysql.analyze_jobs ORDER BY end_time DESC LIMIT 1;
         ```
 
     - 乐观事务模型下将 `tidb_constraint_check_in_place` 设置为 `ON`：
-
-        {{< copyable "sql" >}}
 
         ```sql
         set @@tidb_constraint_check_in_place=ON;
@@ -1409,8 +1403,6 @@ mysql> SELECT job_info FROM mysql.analyze_jobs ORDER BY end_time DESC LIMIT 1;
 - 关闭该变量时，commit 语句可能会报出 `Write conflict` 错误或 `Duplicate entry` 错误，两种错误都意味着事务回滚。
 
     - 悲观事务模型下将 `tidb_constraint_check_in_place_pessimistic` 设置为 `OFF`：
-
-        {{< copyable "sql" >}}
 
         ```sql
         set @@tidb_constraint_check_in_place_pessimistic=OFF;
@@ -3855,23 +3847,17 @@ mysql> desc select count(distinct a) from test.t;
 
     例如，打开这个优化规则后，会将下面子查询做如下变化：
 
-    {{< copyable "sql" >}}
-
     ```sql
     select * from t where t.a in (select aa from t1);
     ```
 
     将子查询转成如下 join：
 
-    {{< copyable "sql" >}}
-
     ```sql
     select t.* from t, (select aa from t1 group by aa) tmp_t where t.a = tmp_t.aa;
     ```
 
     如果 t1 在列 `aa` 上有 unique 且 not null 的限制，可以直接改写为如下，不需要添加 aggregation。
-
-    {{< copyable "sql" >}}
 
     ```sql
     select t.* from t, t1 where t.a=t1.aa;
@@ -6037,7 +6023,7 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 - 作用域：NONE
 - 是否受 Hint [SET_VAR](/optimizer-hints.md#set_varvar_namevar_value) 控制：否
 - 默认值：`8.0.11-TiDB-(tidb version)`
-- 这个变量的值是 MySQL 的版本和 TiDB 的版本，例如 '8.0.11-TiDB-v{{{ .tidb-version }}}'。
+- 这个变量的值是 MySQL 的版本和 TiDB 的版本，例如 '8.0.11-TiDB-v8.5.6'。
 
 ### `version_comment`
 
