@@ -52,7 +52,7 @@ if [ ! -e website-docs/.git ]; then
     rm -rf website-docs
   fi
   # Clone the pingcap/website-docs repository.
-  git clone --single-branch --branch copilot/fix-card-display-issues https://github.com/pingcap/website-docs
+  git clone --single-branch --branch lilin90:home-card-fix https://github.com/pingcap/website-docs
 fi
 
 # Create a symlink to markdown-pages in website-docs/docs.
