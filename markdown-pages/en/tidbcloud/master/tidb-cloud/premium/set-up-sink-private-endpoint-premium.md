@@ -5,7 +5,7 @@ summary: Learn how to set up a private endpoint for changefeeds.
 
 # Set Up Private Endpoint for Changefeeds
 
-This document describes how to create a private endpoint for changefeeds in your {{{ .premium }}} or {{{ .byoc }}} instances, enabling you to securely stream data to self-hosted Kafka, Amazon MSK Provisioned clusters, or MySQL through private connectivity.
+This document describes how to create a private endpoint for changefeeds in your TiDB Cloud Premium or TiDB Cloud BYOC instances, enabling you to securely stream data to self-hosted Kafka, Amazon MSK Provisioned clusters, or MySQL through private connectivity.
 
 ## Prerequisites
 
@@ -27,8 +27,8 @@ Private endpoints leverage the **Private Link** technology from cloud providers,
 
 > **Note:**
 >
-> - A private endpoint is an organization-level resource and is not tied to a specific {{{ .premium }}} or {{{ .byoc }}} instance. Private endpoints created within the same organization and in the same region can be shared by multiple instances connecting to the same downstream service, so you do not need to create a separate endpoint for each instance.
-> - Deleting a {{{ .premium }}} or {{{ .byoc }}} instance does not delete its private endpoints. A private endpoint is automatically deleted if it is not used by any instance for 30 days, even if the instances that previously used it remain available. You can also manually delete a private endpoint when it is no longer needed. However, you cannot delete it while it is in use by any instance.
+> - A private endpoint is an organization-level resource and is not tied to a specific TiDB Cloud Premium or TiDB Cloud BYOC instance. Private endpoints created within the same organization and in the same region can be shared by multiple instances connecting to the same downstream service, so you do not need to create a separate endpoint for each instance.
+> - Deleting a TiDB Cloud Premium or TiDB Cloud BYOC instance does not delete its private endpoints. A private endpoint is automatically deleted if it is not used by any instance for 30 days, even if the instances that previously used it remain available. You can also manually delete a private endpoint when it is no longer needed. However, you cannot delete it while it is in use by any instance.
 
 <SimpleTab>
 <div label="AWS">
@@ -69,7 +69,7 @@ If the Private Endpoint Service is not available for your downstream service, fo
 
 1. Log in to the [TiDB Cloud console](https://tidbcloud.com/).
 
-2. On the [**My TiDB**](https://tidbcloud.com/tidbs) page, click the name of your target {{{ .premium }}} or {{{ .byoc }}} instance to go to its overview page.
+2. On the [**My TiDB**](https://tidbcloud.com/tidbs) page, click the name of your target TiDB Cloud Premium or TiDB Cloud BYOC instance to go to its overview page.
 
     > **Tip:**
     >

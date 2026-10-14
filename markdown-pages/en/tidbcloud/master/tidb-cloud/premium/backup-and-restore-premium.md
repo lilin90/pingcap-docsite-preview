@@ -1,26 +1,26 @@
 ---
-title: Back Up and Restore {{{ .premium }}} or {{{ .byoc }}} Data
-summary: Learn how to back up and restore your {{{ .premium }}} or {{{ .byoc }}} instances.
+title: Back Up and Restore TiDB Cloud Premium or TiDB Cloud BYOC Data
+summary: Learn how to back up and restore your TiDB Cloud Premium or TiDB Cloud BYOC instances.
 aliases: ['/tidbcloud/restore-deleted-tidb-cluster']
 ---
 
-# Back Up and Restore {{{ .premium }}} or {{{ .byoc }}} Data
+# Back Up and Restore TiDB Cloud Premium or TiDB Cloud BYOC Data
 
-This document describes how to back up and restore your data on {{{ .premium }}} or {{{ .byoc }}} instances. {{{ .premium }}} and {{{ .byoc }}} support both automatic backups and manual backups, and let you restore backup data to a new instance as needed.
+This document describes how to back up and restore your data on TiDB Cloud Premium or TiDB Cloud BYOC instances. TiDB Cloud Premium and TiDB Cloud BYOC support both automatic backups and manual backups, and let you restore backup data to a new instance as needed.
 
 Backup files can originate from the following sources:
 
-- Active {{{ .premium }}} or {{{ .byoc }}} instances
-- The Recycle Bin for backups from deleted {{{ .premium }}} or {{{ .byoc }}} instances
+- Active TiDB Cloud Premium or TiDB Cloud BYOC instances
+- The Recycle Bin for backups from deleted TiDB Cloud Premium or TiDB Cloud BYOC instances
 
 > **Tip:**
 >
-> - To learn how to back up and restore data on {{{ .dedicated }}} clusters, see [Back Up and Restore {{{ .dedicated }}} Data](/tidb-cloud/backup-and-restore.md).
-> - To learn how to back up and restore data on {{{ .starter }}} or {{{ .essential }}} instances, see [Back Up and Restore {{{ .starter }}} or Essential Data](/tidb-cloud/backup-and-restore-serverless.md).
+> - To learn how to back up and restore data on TiDB Cloud Dedicated clusters, see [Back Up and Restore TiDB Cloud Dedicated Data](/tidb-cloud/backup-and-restore.md).
+> - To learn how to back up and restore data on TiDB Cloud Starter or TiDB Cloud Essential instances, see [Back Up and Restore TiDB Cloud Starter or Essential Data](/tidb-cloud/backup-and-restore-serverless.md).
 
 ## View the Backup page
 
-1. On the [**My TiDB**](https://tidbcloud.com/tidbs) page, click the name of your target {{{ .premium }}} or {{{ .byoc }}} instance to go to its overview page.
+1. On the [**My TiDB**](https://tidbcloud.com/tidbs) page, click the name of your target TiDB Cloud Premium or TiDB Cloud BYOC instance to go to its overview page.
 
     > **Tip:**
     >
@@ -30,7 +30,7 @@ Backup files can originate from the following sources:
 
 ## Automatic backups
 
-{{{ .premium }}} and {{{ .byoc }}} provide enhanced automatic backup capabilities for production environments. They combine high-frequency snapshots with log backups to ensure data reliability.
+TiDB Cloud Premium and TiDB Cloud BYOC provide enhanced automatic backup capabilities for production environments. They combine high-frequency snapshots with log backups to ensure data reliability.
 
 ### Automatic backup modes
 
@@ -58,7 +58,7 @@ PITR lets you restore data to any point in time within the retention period. A s
 
 ### Configure automatic backups
 
-1. On the [**My TiDB**](https://tidbcloud.com/tidbs) page, click the name of your target {{{ .premium }}} or {{{ .byoc }}} instance.
+1. On the [**My TiDB**](https://tidbcloud.com/tidbs) page, click the name of your target TiDB Cloud Premium or TiDB Cloud BYOC instance.
 
 2. In the left navigation pane, click **Data** > **Backup**.
 
@@ -123,7 +123,7 @@ To help prevent data loss and preserve a recovery point, TiDB Cloud protects **t
 
 ### Delete backup files
 
-To delete an existing backup file for your {{{ .premium }}} or {{{ .byoc }}} instance, perform the following steps:
+To delete an existing backup file for your TiDB Cloud Premium or TiDB Cloud BYOC instance, perform the following steps:
 
 1. Navigate to the [**Backup**](#view-the-backup-page) page of your instance.
 
@@ -136,7 +136,7 @@ To delete an existing backup file for your {{{ .premium }}} or {{{ .byoc }}} ins
 
 ## Manual backups
 
-In addition to automatic backups, {{{ .premium }}} and {{{ .byoc }}} support manual backups. A manual backup provides a controlled, guaranteed restore point. It is highly recommended that you create a manual backup before you perform high-risk operations such as system upgrades, critical data deletion, or irreversible schema or configuration changes.
+In addition to automatic backups, TiDB Cloud Premium and TiDB Cloud BYOC support manual backups. A manual backup provides a controlled, guaranteed restore point. It is highly recommended that you create a manual backup before you perform high-risk operations such as system upgrades, critical data deletion, or irreversible schema or configuration changes.
 
 ### Key characteristics
 
@@ -190,9 +190,9 @@ TiDB Cloud supports snapshot restore and point-in-time restore for your instance
 
 TiDB Cloud supports restoring data to a new instance.
 
-### Restore to a new {{{ .premium }}} or {{{ .byoc }}} instance {#restore-to-a-new-instance}
+### Restore to a new TiDB Cloud Premium or TiDB Cloud BYOC instance {#restore-to-a-new-instance}
 
-To restore your data to a new {{{ .premium }}} or {{{ .byoc }}} instance, take the following steps:
+To restore your data to a new TiDB Cloud Premium or TiDB Cloud BYOC instance, take the following steps:
 
 1. Navigate to the [**Backup**](#view-the-backup-page) page of your instance.
 
@@ -221,11 +221,11 @@ To restore your data to a new {{{ .premium }}} or {{{ .byoc }}} instance, take t
 
 4. Click **Next** to proceed to the **Restore to a New Instance** page.
 
-5. Configure your new {{{ .premium }}} or {{{ .byoc }}} instance for restoration. Follow the steps in <CustomContent plan="premium">[Create a {{{ .premium }}} Instance](/tidb-cloud/premium/create-tidb-instance-premium.md)</CustomContent><CustomContent plan="byoc">[Create a {{{ .byoc }}} Instance](/tidb-cloud/byoc/create-tidb-instance-byoc.md)</CustomContent>.
+5. Configure your new TiDB Cloud Premium or TiDB Cloud BYOC instance for restoration. Follow the steps in <CustomContent plan="premium">[Create a TiDB Cloud Premium Instance](/tidb-cloud/premium/create-tidb-instance-premium.md)</CustomContent><CustomContent plan="byoc">[Create a TiDB Cloud BYOC Instance](/tidb-cloud/byoc/create-tidb-instance-byoc.md)</CustomContent>.
 
     <CustomContent plan="byoc">
 
-    For {{{ .byoc }}}, select an active resource pool in the same cloud provider and region as the backup. The restored instance inherits the high availability mode of the selected resource pool. You can restore the same backup to a zonal or regional resource pool. If no suitable resource pool is available, an `Organization Owner` can create one before restoring the instance. Other roles cannot create resource pools. For more information, see [Create a Resource Pool](/tidb-cloud/byoc/create-resource-pool-byoc.md).
+    For TiDB Cloud BYOC, select an active resource pool in the same cloud provider and region as the backup. The restored instance inherits the high availability mode of the selected resource pool. You can restore the same backup to a zonal or regional resource pool. If no suitable resource pool is available, an `Organization Owner` can create one before restoring the instance. Other roles cannot create resource pools. For more information, see [Create a Resource Pool](/tidb-cloud/byoc/create-resource-pool-byoc.md).
 
     If the selected resource pool has a Pool vCPU Limit and its current provisioned vCPU is greater than or equal to the limit, TiDB Cloud displays a warning and you cannot restore the instance to that resource pool. To continue, go to the Resource Pool details page to increase or turn off the Pool vCPU Limit, or select another resource pool.
 
@@ -245,7 +245,7 @@ To restore your data to a new {{{ .premium }}} or {{{ .byoc }}} instance, take t
 
 ### Restore from Recycle Bin
 
-To restore a deleted {{{ .premium }}} or {{{ .byoc }}} instance from the Recycle Bin, take the following steps:
+To restore a deleted TiDB Cloud Premium or TiDB Cloud BYOC instance from the Recycle Bin, take the following steps:
 
 1. In the [TiDB Cloud console](https://tidbcloud.com), navigate to the [**My TiDB**](https://tidbcloud.com/tidbs) page of your organization, click **...** in the upper-right corner, and then click **Recycle Bin**.
 
@@ -253,9 +253,9 @@ To restore a deleted {{{ .premium }}} or {{{ .byoc }}} instance from the Recycle
     >
     > If you are in multiple organizations, use the combo box in the upper-left corner to switch to your target organization first.
 
-2. On the **Recycle Bin** page, click the <CustomContent plan="premium">**Premium**</CustomContent><CustomContent plan="byoc">**BYOC**</CustomContent> tab to go to the recycle bin of <CustomContent plan="premium">{{{ .premium }}}</CustomContent><CustomContent plan="byoc">{{{ .byoc }}}</CustomContent> instances.
+2. On the **Recycle Bin** page, click the <CustomContent plan="premium">**Premium**</CustomContent><CustomContent plan="byoc">**BYOC**</CustomContent> tab to go to the recycle bin of <CustomContent plan="premium">TiDB Cloud Premium</CustomContent><CustomContent plan="byoc">TiDB Cloud BYOC</CustomContent> instances.
 
-3. Locate the <CustomContent plan="premium">{{{ .premium }}}</CustomContent><CustomContent plan="byoc">{{{ .byoc }}}</CustomContent> instance you want to restore, and then click the **>** button to expand the available backups of the instance.
+3. Locate the <CustomContent plan="premium">TiDB Cloud Premium</CustomContent><CustomContent plan="byoc">TiDB Cloud BYOC</CustomContent> instance you want to restore, and then click the **>** button to expand the available backups of the instance.
 
 4. In the row of your desired backup, click **...**, and then select **Restore**.
 
@@ -265,18 +265,18 @@ To restore a deleted {{{ .premium }}} or {{{ .byoc }}} instance from the Recycle
 
 ### Restore backups from a different plan type
 
-Currently, you can only restore backups from a {{{ .dedicated }}} cluster hosted on AWS to a new {{{ .premium }}} instance.
+Currently, you can only restore backups from a TiDB Cloud Dedicated cluster hosted on AWS to a new TiDB Cloud Premium instance.
 
-To restore a backup generated by a {{{ .dedicated }}} cluster, follow these steps:
+To restore a backup generated by a TiDB Cloud Dedicated cluster, follow these steps:
 
 1. Log in to the [TiDB Cloud console](https://tidbcloud.com), and then navigate to the [**My TiDB**](https://tidbcloud.com/tidbs) page. In the upper-right corner, click **...**, and then click **Restore from Another Plan**.
 
-2. On the **Select Backup** page, select the project that contains the target {{{ .dedicated }}} cluster. Select the {{{ .dedicated }}} cluster, select the backup snapshot that you want to restore, and then click **Next**.
+2. On the **Select Backup** page, select the project that contains the target TiDB Cloud Dedicated cluster. Select the TiDB Cloud Dedicated cluster, select the backup snapshot that you want to restore, and then click **Next**.
 
     > **Note:**
     >
-    > - Ensure that the {{{ .dedicated }}} cluster that contains the backup snapshot is in either the **Active** or **Deleted** status within the selected project.
-    > - The snapshot must be located in a region that {{{ .premium }}} supports. If the region is not supported, contact [TiDB Cloud Support](/tidb-cloud/tidb-cloud-support.md) to open a new region for {{{ .premium }}}, or select another backup snapshot.
+    > - Ensure that the TiDB Cloud Dedicated cluster that contains the backup snapshot is in either the **Active** or **Deleted** status within the selected project.
+    > - The snapshot must be located in a region that TiDB Cloud Premium supports. If the region is not supported, contact [TiDB Cloud Support](/tidb-cloud/tidb-cloud-support.md) to open a new region for TiDB Cloud Premium, or select another backup snapshot.
 
 3. On the **Restore** page, follow the same steps as [Restore to a new instance](#restore-to-a-new-instance) to restore the backup to a new instance.
 
@@ -286,13 +286,13 @@ To restore a backup generated by a {{{ .dedicated }}} cluster, follow these step
 
 <CustomContent plan="premium">
 
-{{{ .premium }}} supports restoring backups from cloud storage (such as Amazon S3 and Alibaba Cloud Object Storage Service (OSS)) to a new instance. This feature is compatible with backups generated from {{{ .dedicated }}} clusters or TiDB Self-Managed clusters.
+TiDB Cloud Premium supports restoring backups from cloud storage (such as Amazon S3 and Alibaba Cloud Object Storage Service (OSS)) to a new instance. This feature is compatible with backups generated from TiDB Cloud Dedicated clusters or TiDB Self-Managed clusters.
 
 </CustomContent>
 
 <CustomContent plan="byoc">
 
-{{{ .premium }}} and {{{ .byoc }}} support restoring backups from cloud storage (such as Amazon S3) to a new instance. This feature is compatible with backups generated from {{{ .dedicated }}} clusters or TiDB Self-Managed clusters.
+TiDB Cloud Premium and TiDB Cloud BYOC support restoring backups from cloud storage (such as Amazon S3) to a new instance. This feature is compatible with backups generated from TiDB Cloud Dedicated clusters or TiDB Self-Managed clusters.
 
 </CustomContent>
 
@@ -351,11 +351,11 @@ To restore backups from cloud storage, do the following:
 
 3. Click **Verify Backup and Next**.
 
-4. If the verification is successful, the **Restore to a New Instance** page appears. Review the backup information displayed at the top of the page, and then follow the steps in <CustomContent plan="premium">[Create a {{{ .premium }}} Instance](/tidb-cloud/premium/create-tidb-instance-premium.md)</CustomContent><CustomContent plan="byoc">[Create a {{{ .byoc }}} Instance](/tidb-cloud/byoc/create-tidb-instance-byoc.md)</CustomContent> to restore the backup to a new instance.
+4. If the verification is successful, the **Restore to a New Instance** page appears. Review the backup information displayed at the top of the page, and then follow the steps in <CustomContent plan="premium">[Create a TiDB Cloud Premium Instance](/tidb-cloud/premium/create-tidb-instance-premium.md)</CustomContent><CustomContent plan="byoc">[Create a TiDB Cloud BYOC Instance](/tidb-cloud/byoc/create-tidb-instance-byoc.md)</CustomContent> to restore the backup to a new instance.
 
     <CustomContent plan="byoc">
 
-    For {{{ .byoc }}}, select an active resource pool that matches the target cloud provider and region. The restored instance inherits the high availability mode of the selected resource pool. You can restore the same backup to a zonal or regional resource pool. If no suitable resource pool is available, an `Organization Owner` can create one before restoring the instance. Other roles cannot create resource pools. For more information, see [Create a Resource Pool](/tidb-cloud/byoc/create-resource-pool-byoc.md).
+    For TiDB Cloud BYOC, select an active resource pool that matches the target cloud provider and region. The restored instance inherits the high availability mode of the selected resource pool. You can restore the same backup to a zonal or regional resource pool. If no suitable resource pool is available, an `Organization Owner` can create one before restoring the instance. Other roles cannot create resource pools. For more information, see [Create a Resource Pool](/tidb-cloud/byoc/create-resource-pool-byoc.md).
 
     If the selected resource pool has a Pool vCPU Limit and its current provisioned vCPU is greater than or equal to the limit, TiDB Cloud displays a warning and you cannot restore the instance to that resource pool. To continue, go to the Resource Pool details page to increase or turn off the Pool vCPU Limit, or select another resource pool.
 
@@ -387,7 +387,7 @@ Take the following steps to configure an access key:
 
 2. Grant permissions to the IAM user.
 
-    Create a policy with only the permissions required for your task and attach it to the IAM user. To restore data to a {{{ .premium }}} or {{{ .byoc }}} instance, grant the `s3:GetObject`, `s3:GetBucketLocation`, and `s3:ListBucket` permissions.
+    Create a policy with only the permissions required for your task and attach it to the IAM user. To restore data to a TiDB Cloud Premium or TiDB Cloud BYOC instance, grant the `s3:GetObject`, `s3:GetBucketLocation`, and `s3:ListBucket` permissions.
 
     The following is an example policy that allows TiDB Cloud to restore data from a specific folder in your Amazon S3 bucket.
 
@@ -444,7 +444,7 @@ Take the following steps to configure an AccessKey pair:
 
     - In the **Effect** section, select **Allow**.
     - In the **Service** section, select **Object Storage Service**.
-    - In the **Action** section, select the required permissions. To restore a backup to a {{{ .premium }}} instance, grant the `oss:ListObjects` and `oss:GetObject` permissions.
+    - In the **Action** section, select the required permissions. To restore a backup to a TiDB Cloud Premium instance, grant the `oss:ListObjects` and `oss:GetObject` permissions.
 
         > **Tip:**
         >

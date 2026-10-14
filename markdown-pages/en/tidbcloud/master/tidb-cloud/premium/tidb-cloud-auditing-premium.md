@@ -1,15 +1,15 @@
 ---
-title: "{{{ .premium }}} or {{{ .byoc }}} Database Audit Logging"
-summary: Learn how to enable database audit logging for {{{ .premium }}} or {{{ .byoc }}} instances and configure audit filters and cloud storage.
+title: "TiDB Cloud Premium or TiDB Cloud BYOC Database Audit Logging"
+summary: Learn how to enable database audit logging for TiDB Cloud Premium or TiDB Cloud BYOC instances and configure audit filters and cloud storage.
 ---
 
-# {{{ .premium }}} or {{{ .byoc }}} Database Audit Logging
+# TiDB Cloud Premium or TiDB Cloud BYOC Database Audit Logging
 
 TiDB Cloud provides an audit logging feature that records user access activities of your database, such as executed SQL statements.
 
 To evaluate the effectiveness of user access policies and other information security measures of your organization, it is a security best practice to periodically analyze database audit logs.
 
-The audit logging feature is **disabled by default**. To audit a {{{ .premium }}} or {{{ .byoc }}} instance, you must first enable audit logging, and then configure auditing filter rules.
+The audit logging feature is **disabled by default**. To audit a TiDB Cloud Premium or TiDB Cloud BYOC instance, you must first enable audit logging, and then configure auditing filter rules.
 
 > **Note:**
 >
@@ -17,19 +17,19 @@ The audit logging feature is **disabled by default**. To audit a {{{ .premium }}
 
 ## Prerequisites
 
-- You are using a {{{ .premium }}} or {{{ .byoc }}} instance.
+- You are using a TiDB Cloud Premium or TiDB Cloud BYOC instance.
 
     > **Note:**
     >
-    > - Database audit logging is not available for {{{ .starter }}}.
-    > - For {{{ .essential }}}, see [Database Audit Logging (PREVIEW) for {{{ .essential }}}](/tidb-cloud/essential-database-audit-logging.md).
-    > - For {{{ .dedicated }}}, see [{{{ .dedicated }}} Database Audit Logging](/tidb-cloud/tidb-cloud-auditing.md).
+    > - Database audit logging is not available for TiDB Cloud Starter.
+    > - For TiDB Cloud Essential, see [Database Audit Logging (PREVIEW) for TiDB Cloud Essential](/tidb-cloud/essential-database-audit-logging.md).
+    > - For TiDB Cloud Dedicated, see [TiDB Cloud Dedicated Database Audit Logging](/tidb-cloud/tidb-cloud-auditing.md).
 
 - You must have the `Organization Owner` role in your organization. Otherwise, you cannot see the database audit-related options in the TiDB Cloud console.
 
 ## Enable audit logging
 
-TiDB Cloud supports recording the audit logs of a {{{ .premium }}} or {{{ .byoc }}} instance to your cloud storage service. Before enabling database audit logging, configure your cloud storage service on the cloud provider where the instance is located.
+TiDB Cloud supports recording the audit logs of a TiDB Cloud Premium or TiDB Cloud BYOC instance to your cloud storage service. Before enabling database audit logging, configure your cloud storage service on the cloud provider where the instance is located.
 
 ### Enable audit logging for TiDB on AWS
 
@@ -47,7 +47,7 @@ For more information, see [Creating a general purpose bucket](https://docs.aws.a
 
 #### Step 2. Configure Amazon S3 access
 
-1. Get the TiDB Cloud Account ID and the External ID of the {{{ .premium }}} or {{{ .byoc }}} instance that you want to enable audit logging.
+1. Get the TiDB Cloud Account ID and the External ID of the TiDB Cloud Premium or TiDB Cloud BYOC instance that you want to enable audit logging.
 
     1. In the TiDB Cloud console, navigate to the [**My TiDB**](https://tidbcloud.com/tidbs) page.
 
@@ -84,7 +84,7 @@ For more information, see [Creating a general purpose bucket](https://docs.aws.a
 
     <CustomContent plan="byoc">
 
-    For {{{ .byoc }}}, verify that the customer-created `tidbx-byoc-auditlog-role` IAM role has the `tidbcloud.com/allow-dataplane-access=true` tag.
+    For TiDB Cloud BYOC, verify that the customer-created `tidbx-byoc-auditlog-role` IAM role has the `tidbcloud.com/allow-dataplane-access=true` tag.
 
     If the tag is missing, add it to the role before enabling audit logging. If audit logging was enabled before the tag was added, disable and re-enable audit logging after updating the tag.
 
@@ -137,7 +137,7 @@ In this step, you will configure Alibaba Cloud RAM permissions so that TiDB Clou
 
 If the OSS bucket storing the audit logs and the role accessing the OSS bucket are in the same cloud account, configure the OSS access as follows:
 
-1. Get the Alibaba Cloud Service Account ID of the {{{ .premium }}} instance that you want to enable audit logging.
+1. Get the Alibaba Cloud Service Account ID of the TiDB Cloud Premium instance that you want to enable audit logging.
 
     1. In the TiDB Cloud console, navigate to the [**My TiDB**](https://tidbcloud.com/tidbs) page.
     2. Click the name of your target instance to go to its overview page, and then click **Settings** > **DB Audit Logging** in the left navigation pane.
@@ -243,7 +243,7 @@ If the OSS bucket storing the audit logs and the role accessing the OSS bucket a
 In the TiDB Cloud console, go back to the **Database Audit Log Storage Configuration** dialog where you got the TiDB Cloud account ID, and then take the following steps:
 
 1. In the **Bucket URI** field, enter the URI of your OSS bucket. For example, ``oss://tidb-cloud-audit-log``.
-2. In the **Bucket Region** field, select the Alibaba Cloud region where the bucket is located (recommended to match your {{{ .premium }}} instance region).
+2. In the **Bucket Region** field, select the Alibaba Cloud region where the bucket is located (recommended to match your TiDB Cloud Premium instance region).
 3. In the **Role ARN** field, paste the Role ARN value copied in [Step 2. Configure the OSS access](#step-2-configure-oss-access).
 4. Click **Test Connection** to verify whether TiDB Cloud can access and write to the OSS bucket.
 
@@ -403,4 +403,4 @@ When the event class is `AUDIT` or a subclass of `AUDIT`, the audit logs contain
 
 ## Audit logging limitations
 
-{{{ .premium }}} and {{{ .byoc }}} do not guarantee that audit logs are written in chronological order. To find the most recent events, you might need to review all log files. To sort logs chronologically, use the `TIME` field in each audit record.
+TiDB Cloud Premium and TiDB Cloud BYOC do not guarantee that audit logs are written in chronological order. To find the most recent events, you might need to review all log files. To sort logs chronologically, use the `TIME` field in each audit record.

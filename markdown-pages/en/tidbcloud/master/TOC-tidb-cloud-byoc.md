@@ -45,13 +45,13 @@
     - [Create a Resource Pool](/tidb-cloud/byoc/create-resource-pool-byoc.md)
     - [Manage Resource Pools](/tidb-cloud/byoc/manage-resource-pools-byoc.md)
 - Manage Instances
-  - [Create a {{{ .byoc }}} Instance](/tidb-cloud/byoc/create-tidb-instance-byoc.md)
-  - Connect to Your {{{ .byoc }}} Instance
+  - [Create a TiDB Cloud BYOC Instance](/tidb-cloud/byoc/create-tidb-instance-byoc.md)
+  - Connect to Your TiDB Cloud BYOC Instance
     - [Connection Overview](/tidb-cloud/premium/connect-to-tidb-instance.md)
     - [Connect via Public Endpoint](/tidb-cloud/premium/connect-to-premium-via-public-connection.md)
     - [Connect via Private Endpoint with AWS](/tidb-cloud/premium/connect-to-premium-via-aws-private-endpoint.md)
   - [Back Up and Restore TiDB Cloud Data](/tidb-cloud/premium/backup-and-restore-premium.md)
-  - [Export Data from {{{ .byoc }}}](/tidb-cloud/premium/premium-export.md)
+  - [Export Data from TiDB Cloud BYOC](/tidb-cloud/premium/premium-export.md)
   - Use TiFlash for HTAP
     - [TiFlash Overview](/tiflash/tiflash-overview.md)
     - [Create TiFlash Replicas](/tiflash/create-tiflash-replicas.md)
@@ -121,7 +121,7 @@
     - [TiKV Follower Read](/follower-read.md)
     - [Coprocessor Cache](/coprocessor-cache.md)
     - [Tune TiFlash Performance](/tiflash/tune-tiflash-performance.md)
-  - [Delete a {{{ .byoc }}} Instance](/tidb-cloud/premium/delete-tidb-instance.md)
+  - [Delete a TiDB Cloud BYOC Instance](/tidb-cloud/premium/delete-tidb-instance.md)
 - Migrate or Import Data
   - [Overview](/tidb-cloud/tidb-cloud-migration-overview.md)
   - Migrate Data into TiDB Cloud

@@ -1,11 +1,11 @@
 ---
-title: Delete a {{{ .premium }}} or {{{ .byoc }}} instance
-summary: Learn how to delete a {{{ .premium }}} or {{{ .byoc }}} instance.
+title: Delete a TiDB Cloud Premium or TiDB Cloud BYOC instance
+summary: Learn how to delete a TiDB Cloud Premium or TiDB Cloud BYOC instance.
 ---
 
-# Delete a {{{ .premium }}} or {{{ .byoc }}} instance
+# Delete a TiDB Cloud Premium or TiDB Cloud BYOC instance
 
-This document describes how to delete a {{{ .premium }}} or {{{ .byoc }}} instance.
+This document describes how to delete a TiDB Cloud Premium or TiDB Cloud BYOC instance.
 
 You can delete an instance at any time by performing the following steps:
 
@@ -21,11 +21,11 @@ You can delete an instance at any time by performing the following steps:
 
     Enter `<organization name>/<instance name>` to ensure the instance is deleted correctly.
 
-    If you want to restore the instance some time in the future, make sure that you have a backup of the instance. Otherwise, you cannot restore it. For more information about how to back up {{{ .premium }}} or {{{ .byoc }}} instances, see [Back Up and Restore {{{ .premium }}} or {{{ .byoc }}} Data](/tidb-cloud/premium/backup-and-restore-premium.md).
+    If you want to restore the instance some time in the future, make sure that you have a backup of the instance. Otherwise, you cannot restore it. For more information about how to back up TiDB Cloud Premium or TiDB Cloud BYOC instances, see [Back Up and Restore TiDB Cloud Premium or TiDB Cloud BYOC Data](/tidb-cloud/premium/backup-and-restore-premium.md).
 
 5. Click **I understand, delete it**.
 
-    Once you delete a backed up {{{ .premium }}} or {{{ .byoc }}} instance, the existing backup files of the instance are moved to the recycle bin.
+    Once you delete a backed up TiDB Cloud Premium or TiDB Cloud BYOC instance, the existing backup files of the instance are moved to the recycle bin.
 
     Automatic backups will expire and be automatically deleted once the retention period ends. The default retention period is 7 days if you don't modify it.
 
@@ -45,4 +45,4 @@ You can delete an instance at any time by performing the following steps:
 
     </CustomContent>
 
-    If you want to restore a {{{ .premium }}} or {{{ .byoc }}} instance from the recycle bin, see [Restore from Recycle Bin](/tidb-cloud/premium/backup-and-restore-premium.md#restore-from-recycle-bin).
+    If you want to restore a TiDB Cloud Premium or TiDB Cloud BYOC instance from the recycle bin, see [Restore from Recycle Bin](/tidb-cloud/premium/backup-and-restore-premium.md#restore-from-recycle-bin).

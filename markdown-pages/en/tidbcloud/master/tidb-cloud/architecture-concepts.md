@@ -23,22 +23,22 @@ TiDB Cloud makes it easy to scale your database, handle complex management tasks
 
 <CustomContent language="en,zh">
 
-- For AWS, TiDB Cloud provides **{{{ .starter }}}** for auto-scaling, cost-efficient workloads, **{{{ .essential }}}** for production-ready workloads with provisioned capacity, **{{{ .premium }}}** for mission-critical workloads that require high performance and enhanced security, and **{{{ .dedicated }}}** for enterprise-grade applications with dedicated resources and advanced capabilities.
-- For Google Cloud and Azure, TiDB Cloud provides **{{{ .dedicated }}}** for enterprise-grade applications with dedicated resources and advanced capabilities.
-- For Alibaba Cloud, TiDB Cloud provides **{{{ .starter }}}** for auto-scaling, cost-efficient workloads, **{{{ .essential }}}** for production-ready workloads with provisioned capacity, and **{{{ .premium }}}** for mission-critical workloads that require high performance and enhanced security.
+- For AWS, TiDB Cloud provides **TiDB Cloud Starter** for auto-scaling, cost-efficient workloads, **TiDB Cloud Essential** for production-ready workloads with provisioned capacity, **TiDB Cloud Premium** for mission-critical workloads that require high performance and enhanced security, and **TiDB Cloud Dedicated** for enterprise-grade applications with dedicated resources and advanced capabilities.
+- For Google Cloud and Azure, TiDB Cloud provides **TiDB Cloud Dedicated** for enterprise-grade applications with dedicated resources and advanced capabilities.
+- For Alibaba Cloud, TiDB Cloud provides **TiDB Cloud Starter** for auto-scaling, cost-efficient workloads, **TiDB Cloud Essential** for production-ready workloads with provisioned capacity, and **TiDB Cloud Premium** for mission-critical workloads that require high performance and enhanced security.
 
 </CustomContent>
 
 <CustomContent language="ja">
 
-- For AWS, TiDB Cloud provides **{{{ .starter }}}** for auto-scaling, cost-efficient workloads, **{{{ .essential }}}** for production-ready workloads with provisioned capacity, **{{{ .premium }}}** for mission-critical workloads that require high performance and enhanced security, and **{{{ .dedicated }}}** for enterprise-grade applications with dedicated resources and advanced capabilities.
-- For Google Cloud and Azure, TiDB Cloud provides **{{{ .dedicated }}}** for enterprise-grade applications with dedicated resources and advanced capabilities.
+- For AWS, TiDB Cloud provides **TiDB Cloud Starter** for auto-scaling, cost-efficient workloads, **TiDB Cloud Essential** for production-ready workloads with provisioned capacity, **TiDB Cloud Premium** for mission-critical workloads that require high performance and enhanced security, and **TiDB Cloud Dedicated** for enterprise-grade applications with dedicated resources and advanced capabilities.
+- For Google Cloud and Azure, TiDB Cloud provides **TiDB Cloud Dedicated** for enterprise-grade applications with dedicated resources and advanced capabilities.
 
 </CustomContent>
 
-## {{{ .starter }}}
+## TiDB Cloud Starter
 
-{{{ .starter }}} is a fully managed, multi-tenant TiDB offering. It delivers an instant, autoscaling MySQL-compatible database.
+TiDB Cloud Starter is a fully managed, multi-tenant TiDB offering. It delivers an instant, autoscaling MySQL-compatible database.
 
 The Starter plan is ideal for those who are getting started with TiDB Cloud. It provides developers and small teams with the following features:
 
@@ -47,7 +47,7 @@ The Starter plan is ideal for those who are getting started with TiDB Cloud. It 
 - **Storage**: Provides an initial 5 GiB of row-based storage and 5 GiB of columnar storage.
 - **Request Units**: Includes 50 million [Request Units (RUs)](/tidb-cloud/tidb-cloud-glossary.md#request-unit-ru) for database operations.
 
-## {{{ .essential }}}
+## TiDB Cloud Essential
 
 For applications experiencing growing workloads and needing scalability in real time, the Essential plan provides the flexibility and performance to keep pace with your business growth with the following features:
 
@@ -57,7 +57,7 @@ For applications experiencing growing workloads and needing scalability in real 
 - **Automatic scaling**: automatically adjusts storage and computing resources to efficiently meet changing workload demands.
 - **Predictable pricing**: billed based on storage and Request Capacity Units (RCUs) of the compute resources, offering transparent, usage-based pricing that scales with your needs, so you only pay for what you use without surprises.
 
-{{{ .essential }}} offers zonal high availability, which places all components within the same availability zone to reduce network latency. For more information, see [High Availability in TiDB Cloud](/tidb-cloud/serverless-high-availability.md).
+TiDB Cloud Essential offers zonal high availability, which places all components within the same availability zone to reduce network latency. For more information, see [High Availability in TiDB Cloud](/tidb-cloud/serverless-high-availability.md).
 
 </CustomContent>
 
@@ -68,7 +68,7 @@ For applications experiencing growing workloads and needing scalability in real 
 - **High availability**: built-in fault tolerance and redundancy ensure your applications remain available and resilient, even during infrastructure failures.
 - **Predictable pricing**: billed based on storage and Request Capacity Units (RCUs) of the compute resources, offering transparent, usage-based pricing that scales with your needs, so you only pay for what you use without surprises.
 
-{{{ .essential }}} offers two types of high availability to address varying operational requirements.
+TiDB Cloud Essential offers two types of high availability to address varying operational requirements.
 
 - Zonal High Availability: places all components within the same availability zone, which results in lower network latency.
 - Regional High Availability: distributes nodes across multiple availability zones, providing maximum infrastructure isolation and redundancy.
@@ -77,7 +77,7 @@ For more information, see [High Availability in TiDB Cloud](/tidb-cloud/serverle
 
 </CustomContent>
 
-## {{{ .premium }}}
+## TiDB Cloud Premium
 
 For mission-critical applications that require high performance and enhanced security in a managed environment, the Premium plan provides robust infrastructure and advanced controls with the following features:
 
@@ -86,7 +86,7 @@ For mission-critical applications that require high performance and enhanced sec
 - **Pay-as-you-go pricing**: billed based on actual [Request Capacity Unit (RCU)](/tidb-cloud/tidb-cloud-glossary.md#request-capacity-unit-rcu) consumption and storage usage. This flexible model eliminates the need for manual backend over-provisioning.
 - **Advanced security**: offers deeper security configurations and compliance capabilities required by large-scale enterprises and regulated industries.
 
-To maximize uptime and resilience for mission-critical workloads, {{{ .premium }}} provides [Regional High Availability](/tidb-cloud/serverless-high-availability.md#regional-high-availability-architecture), which distributes nodes across multiple availability zones for greater redundancy than zonal deployments.
+To maximize uptime and resilience for mission-critical workloads, TiDB Cloud Premium provides [Regional High Availability](/tidb-cloud/serverless-high-availability.md#regional-high-availability-architecture), which distributes nodes across multiple availability zones for greater redundancy than zonal deployments.
 
 ## TiDB Cloud BYOC
 
@@ -110,14 +110,14 @@ A TiDB Cloud BYOC deployment includes the following major components:
 
 - **TiDB Cloud control plane**: provides the TiDB Cloud console, organization and project management, billing, lifecycle orchestration, monitoring views, alerting, and maintenance workflows.
 - **BYOC data plane**: runs the TiDB service and related infrastructure in your cloud account. TiDB Cloud operates this environment based on the permissions granted during BYOC onboarding.
-- **Resource pool**: defines the underlying physical resource, network, and capacity boundary for one or more {{{ .byoc }}} instances. Each resource pool has its own capacity configuration, resource pool CIDR, high availability mode, and AWS resource tags.
+- **Resource pool**: defines the underlying physical resource, network, and capacity boundary for one or more TiDB Cloud BYOC instances. Each resource pool has its own capacity configuration, resource pool CIDR, high availability mode, and AWS resource tags.
 - **TiDB service VPC**: hosts TiDB service components that serve application traffic.
 - **Observability service VPC**: hosts observability components used to collect metrics, logs, and operational data for the BYOC deployment.
 - **Application VPC**: hosts your applications. You manage this VPC and configure network connectivity to access the BYOC TiDB service.
 
 Each BYOC region is deployed and operated independently. When a BYOC region is added, TiDB Cloud provisions the required regional resources in your cloud account. Because each BYOC region has its own data-plane setup, regions do not share a single TiDB Service VPC or Observability Service VPC.
 
-Your applications connect to a {{{ .byoc }}} instance from your application environment. Depending on your BYOC configuration, connections use either private or controlled public access. For private access, BYOC supports VPC peering and other private connectivity options.
+Your applications connect to a TiDB Cloud BYOC instance from your application environment. Depending on your BYOC configuration, connections use either private or controlled public access. For private access, BYOC supports VPC peering and other private connectivity options.
 
 ## TiDB Cloud Dedicated
 
@@ -127,7 +127,7 @@ Built on isolated cloud resources such as VPCs, VMs, managed Kubernetes services
 
 ![TiDB Cloud Dedicated Architecture](/media/tidb-cloud/tidb-cloud-dedicated-architecture.png)
 
-## {{{ .lake }}} {#lake}
+## TiDB Cloud Lake {#lake}
 
 TiDB Cloud Lake is a cloud-native data warehouse service for analytics workloads. It separates compute and storage, allowing you to provision warehouses independently, scale with workload changes, and store data cost-effectively in object storage.
 
@@ -141,17 +141,17 @@ The [TiDB Cloud console](https://tidbcloud.com/) is the web-based management int
 
 ## TiDB Cloud CLI (PREVIEW)
 
-The TiDB Cloud CLI, `ticloud`, allows you to manage {{{ .starter }}} and Essential instances directly from your terminal with simple commands. You can perform tasks such as:
+The TiDB Cloud CLI, `ticloud`, allows you to manage TiDB Cloud Starter and Essential instances directly from your terminal with simple commands. You can perform tasks such as:
 
-- Creating, deleting, and listing {{{ .starter }}} and Essential instances.
-- Importing data into {{{ .starter }}} and Essential instances.
-- Exporting data from {{{ .starter }}} and Essential instances.
+- Creating, deleting, and listing TiDB Cloud Starter and Essential instances.
+- Importing data into TiDB Cloud Starter and Essential instances.
+- Exporting data from TiDB Cloud Starter and Essential instances.
 
 For more information, see [TiDB Cloud CLI Reference](/tidb-cloud/cli-reference.md).
 
 ## TiDB Cloud API (PREVIEW)
 
-The TiDB Cloud API is a REST-based interface that provides programmatic access to manage resources across {{{ .starter }}}, {{{ .essential }}}, {{{ .premium }}}, and TiDB Cloud Dedicated. It enables automated and efficient handling of tasks such as managing projects, clusters, backups, restores, data imports, billing, and other resources in [TiDB Cloud Data Service](/tidb-cloud/data-service-overview.md).
+The TiDB Cloud API is a REST-based interface that provides programmatic access to manage resources across TiDB Cloud Starter, TiDB Cloud Essential, TiDB Cloud Premium, and TiDB Cloud Dedicated. It enables automated and efficient handling of tasks such as managing projects, clusters, backups, restores, data imports, billing, and other resources in [TiDB Cloud Data Service](/tidb-cloud/data-service-overview.md).
 
 For more information, see [TiDB Cloud API Overview](https://docs.pingcap.com/api/tidb-cloud-api-overview).
 
@@ -160,7 +160,7 @@ For more information, see [TiDB Cloud API Overview](https://docs.pingcap.com/api
 Nodes are the core components of the TiDB architecture. TiDB nodes, TiKV nodes, and TiFlash nodes work together to process SQL queries, store data, and accelerate analytical workloads.
 
 - In a TiDB Cloud Dedicated cluster, you can fully manage the number and size of your dedicated TiDB, TiKV, and TiFlash nodes according to your performance requirements. For more information, see [Scalability](/tidb-cloud/scalability-concepts.md).
-- In a {{{ .starter }}}, {{{ .essential }}}, or {{{ .premium }}} instance, the number and size of TiDB, TiKV, and TiFlash nodes are automatically managed. This ensures seamless scaling, eliminating the need for users to handle node configuration or management tasks.
+- In a TiDB Cloud Starter, TiDB Cloud Essential, or TiDB Cloud Premium instance, the number and size of TiDB, TiKV, and TiFlash nodes are automatically managed. This ensures seamless scaling, eliminating the need for users to handle node configuration or management tasks.
 
 ### TiDB node
 
@@ -209,23 +209,23 @@ A [TiFlash node](/tiflash/tiflash-overview.md) is a specialized type of storage 
 
 <CustomContent plan="premium">
 
-## Request units and capacity in {{{ .premium }}} {#request-units-and-capacity-in-premium}
+## Request units and capacity in TiDB Cloud Premium {#request-units-and-capacity-in-premium}
 
 ### Request Capacity Unit (RCU)
 
-A [Request Capacity Unit (RCU)](/tidb-cloud/tidb-cloud-glossary.md#request-capacity-unit-rcu) is a unit of measure used to represent the provisioned compute capacity for your {{{ .premium }}} instance. One RCU provides a fixed amount of compute resources that can process a certain number of RUs per second. The number of RCUs you provision determines the baseline performance and throughput capacity of your {{{ .premium }}} instance.
+A [Request Capacity Unit (RCU)](/tidb-cloud/tidb-cloud-glossary.md#request-capacity-unit-rcu) is a unit of measure used to represent the provisioned compute capacity for your TiDB Cloud Premium instance. One RCU provides a fixed amount of compute resources that can process a certain number of RUs per second. The number of RCUs you provision determines the baseline performance and throughput capacity of your TiDB Cloud Premium instance.
 
 One RCU represents a sustained capacity of RUs per second. For example, a baseline of *X* RCUs guarantees *X* RUs per second on average, measured over a one-minute window (or the minimum calculation window configured for your instance).
 
 ### RCU auto-scaling
 
-When configuring your {{{ .premium }}} instance, you specify the maximum number of RCUs (`RCU_max`) required for your workload. TiDB Cloud automatically scales capacity within the range of `0.25 * RCU_max` to `RCU_max`.
+When configuring your TiDB Cloud Premium instance, you specify the maximum number of RCUs (`RCU_max`) required for your workload. TiDB Cloud automatically scales capacity within the range of `0.25 * RCU_max` to `RCU_max`.
 
 For example, if you set the maximum capacity to 20,000 RCUs, TiDB Cloud dynamically scales the capacity between 5,000 and 20,000 RCUs based on real-time demand. This scaling is automatic and instantaneous, enabling you to consume up to the maximum number of RCUs at any time without manual intervention or delay.
 
 ### RCU billing
 
-{{{ .premium }}} uses a usage-based billing model that charges you based on the actual Request Capacity Unit (RCU) consumption and storage usage.
+TiDB Cloud Premium uses a usage-based billing model that charges you based on the actual Request Capacity Unit (RCU) consumption and storage usage.
 
 #### Per-minute calculation
 
@@ -241,7 +241,7 @@ If your actual consumption in a given minute is below this threshold, billing de
 
 A [Request Unit (RU)](/tidb-cloud/tidb-cloud-glossary.md#request-unit-ru) is a unit of measure used to represent the resources consumed by a single request to the database. The number of RUs consumed by a request depends on factors such as the operation type and the amount of data retrieved or modified.
 
-{{{ .premium }}} normalizes the cost of all database operations using Request Units and measures this cost based on throughput (Request Units per second, RU/s). This unified metric makes your throughput costs predictable, helping you manage your application costs more effectively.
+TiDB Cloud Premium normalizes the cost of all database operations using Request Units and measures this cost based on throughput (Request Units per second, RU/s). This unified metric makes your throughput costs predictable, helping you manage your application costs more effectively.
 
 #### Baseline performance examples
 

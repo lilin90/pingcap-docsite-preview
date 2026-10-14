@@ -17,7 +17,7 @@ This document describes how to stream data from TiDB Cloud to MySQL using the **
 
 ## Restrictions
 
-- For each <CustomContent plan="dedicated">{{{ .dedicated }}} cluster</CustomContent><CustomContent plan="premium,byoc">{{{ .premium }}} or {{{ .byoc }}} instance</CustomContent>, you can create up to 100 changefeeds.
+- For each <CustomContent plan="dedicated">TiDB Cloud Dedicated cluster</CustomContent><CustomContent plan="premium,byoc">TiDB Cloud Premium or TiDB Cloud BYOC instance</CustomContent>, you can create up to 100 changefeeds.
 - Because TiDB Cloud uses TiCDC to establish changefeeds, it has the same [restrictions as TiCDC](https://docs.pingcap.com/tidb/stable/ticdc-overview#unsupported-scenarios).
 - If the table to be replicated does not have a primary key or a non-null unique index, the absence of a unique constraint during replication could result in duplicated data being inserted downstream in some retry scenarios.
 
@@ -33,17 +33,17 @@ Before creating a changefeed, you need to complete the following prerequisites:
 
 <CustomContent plan="dedicated">
 
-Make sure that your {{{ .dedicated }}} cluster can connect to the MySQL service.
+Make sure that your TiDB Cloud Dedicated cluster can connect to the MySQL service.
 
 <SimpleTab>
 <div label="VPC Peering">
 
 If your MySQL service is in an AWS VPC that has no public internet access, take the following steps:
 
-1. [Set up a VPC peering connection](/tidb-cloud/set-up-vpc-peering-connections.md) between the VPC of the MySQL service and your {{{ .dedicated }}} cluster.
+1. [Set up a VPC peering connection](/tidb-cloud/set-up-vpc-peering-connections.md) between the VPC of the MySQL service and your TiDB Cloud Dedicated cluster.
 2. Modify the inbound rules of the security group that the MySQL service is associated with.
 
-    You must add [the CIDR of the region where your {{{ .dedicated }}} cluster is located](/tidb-cloud/set-up-vpc-peering-connections.md#prerequisite-set-a-cidr-for-a-region) to the inbound rules. Doing so allows the traffic to flow from your {{{ .dedicated }}} cluster to the MySQL instance.
+    You must add [the CIDR of the region where your TiDB Cloud Dedicated cluster is located](/tidb-cloud/set-up-vpc-peering-connections.md#prerequisite-set-a-cidr-for-a-region) to the inbound rules. Doing so allows the traffic to flow from your TiDB Cloud Dedicated cluster to the MySQL instance.
 
 3. If the MySQL URL contains a hostname, you need to allow TiDB Cloud to be able to resolve the DNS hostname of the MySQL service.
 
@@ -53,10 +53,10 @@ If your MySQL service is in an AWS VPC that has no public internet access, take 
 If your MySQL service is in a Google Cloud VPC that has no public internet access, take the following steps:
 
 1. If your MySQL service is Google Cloud SQL, you must expose a MySQL endpoint in the associated VPC of the Google Cloud SQL instance. You may need to use the [**Cloud SQL Auth proxy**](https://cloud.google.com/sql/docs/mysql/sql-proxy) which is developed by Google.
-2. [Set up a VPC peering connection](/tidb-cloud/set-up-vpc-peering-connections.md) between the VPC of the MySQL service and your {{{ .dedicated }}} cluster.
+2. [Set up a VPC peering connection](/tidb-cloud/set-up-vpc-peering-connections.md) between the VPC of the MySQL service and your TiDB Cloud Dedicated cluster.
 3. Modify the ingress firewall rules of the VPC where MySQL is located.
 
-    You must add [the CIDR of the region where your {{{ .dedicated }}} cluster is located](/tidb-cloud/set-up-vpc-peering-connections.md#prerequisite-set-a-cidr-for-a-region) to the ingress firewall rules. Doing so allows the traffic to flow from your {{{ .dedicated }}} cluster to the MySQL endpoint.
+    You must add [the CIDR of the region where your TiDB Cloud Dedicated cluster is located](/tidb-cloud/set-up-vpc-peering-connections.md#prerequisite-set-a-cidr-for-a-region) to the ingress firewall rules. Doing so allows the traffic to flow from your TiDB Cloud Dedicated cluster to the MySQL endpoint.
 
 </div>
 
@@ -64,7 +64,7 @@ If your MySQL service is in a Google Cloud VPC that has no public internet acces
 
 Private endpoints leverage **Private Link** or **Private Service Connect** technologies from cloud providers, enabling resources in your VPC to connect to services in other VPCs through private IP addresses, as if those services were hosted directly within your VPC.
 
-You can connect your {{{ .dedicated }}} cluster to your MySQL service securely through a private endpoint. If the private endpoint is not available for your MySQL service, follow [Set Up Private Endpoint for Changefeeds](/tidb-cloud/set-up-sink-private-endpoint.md) to create one.
+You can connect your TiDB Cloud Dedicated cluster to your MySQL service securely through a private endpoint. If the private endpoint is not available for your MySQL service, follow [Set Up Private Endpoint for Changefeeds](/tidb-cloud/set-up-sink-private-endpoint.md) to create one.
 
 </div>
 
@@ -74,11 +74,11 @@ You can connect your {{{ .dedicated }}} cluster to your MySQL service securely t
 
 <CustomContent plan="premium,byoc">
 
-Make sure that your {{{ .premium }}} or {{{ .byoc }}} instance can connect to the MySQL service.
+Make sure that your TiDB Cloud Premium or TiDB Cloud BYOC instance can connect to the MySQL service.
 
 Private endpoints leverage **Private Link** or **Private Service Connect** technologies from cloud providers, enabling resources in your VPC to connect to services in other VPCs through private IP addresses, as if those services were hosted directly within your VPC.
 
-You can connect your {{{ .premium }}} or {{{ .byoc }}} instance to your MySQL service securely through a private endpoint. If the private endpoint is not available for your MySQL service, follow [Set Up Private Endpoint for Changefeeds](/tidb-cloud/premium/set-up-sink-private-endpoint-premium.md) to create one.
+You can connect your TiDB Cloud Premium or TiDB Cloud BYOC instance to your MySQL service securely through a private endpoint. If the private endpoint is not available for your MySQL service, follow [Set Up Private Endpoint for Changefeeds](/tidb-cloud/premium/set-up-sink-private-endpoint-premium.md) to create one.
 
 </CustomContent>
 
@@ -86,12 +86,12 @@ You can connect your {{{ .premium }}} or {{{ .byoc }}} instance to your MySQL se
 
 <CustomContent plan="dedicated">
 
-The **Sink to MySQL** connector can only sink incremental data from your {{{ .dedicated }}} cluster to MySQL after a certain timestamp. If you already have data in your {{{ .dedicated }}} cluster, you can export and load the existing data of your {{{ .dedicated }}} cluster into MySQL before enabling **Sink to MySQL**.
+The **Sink to MySQL** connector can only sink incremental data from your TiDB Cloud Dedicated cluster to MySQL after a certain timestamp. If you already have data in your TiDB Cloud Dedicated cluster, you can export and load the existing data of your TiDB Cloud Dedicated cluster into MySQL before enabling **Sink to MySQL**.
 
 </CustomContent>
 <CustomContent plan="premium,byoc">
 
-The **Sink to MySQL** connector can only sink incremental data from your {{{ .premium }}} or {{{ .byoc }}} instance to MySQL after a certain timestamp. If you already have data in your {{{ .premium }}} or {{{ .byoc }}} instance, you can export and load the existing data into MySQL before enabling **Sink to MySQL**.
+The **Sink to MySQL** connector can only sink incremental data from your TiDB Cloud Premium or TiDB Cloud BYOC instance to MySQL after a certain timestamp. If you already have data in your TiDB Cloud Premium or TiDB Cloud BYOC instance, you can export and load the existing data into MySQL before enabling **Sink to MySQL**.
 
 </CustomContent>
 
@@ -104,13 +104,11 @@ To load the existing data:
 
     For example:
 
-    {{< copyable "sql" >}}
-
     ```sql
     SET GLOBAL tidb_gc_life_time = '720h';
     ```
 
-2. Use [Dumpling](https://docs.pingcap.com/tidb/stable/dumpling-overview) to export data from your <CustomContent plan="dedicated">{{{ .dedicated }}} cluster</CustomContent><CustomContent plan="premium,byoc">{{{ .premium }}} or {{{ .byoc }}} instance</CustomContent>, then use community tools such as [mydumper/myloader](https://centminmod.com/mydumper.html) to load data to the MySQL service.
+2. Use [Dumpling](https://docs.pingcap.com/tidb/stable/dumpling-overview) to export data from your <CustomContent plan="dedicated">TiDB Cloud Dedicated cluster</CustomContent><CustomContent plan="premium,byoc">TiDB Cloud Premium or TiDB Cloud BYOC instance</CustomContent>, then use community tools such as [mydumper/myloader](https://centminmod.com/mydumper.html) to load data to the MySQL service.
 
 3. From the [exported files of Dumpling](https://docs.pingcap.com/tidb/stable/dumpling-overview#format-of-exported-files), get the start position of MySQL sink from the metadata file:
 
@@ -132,7 +130,7 @@ If you do not load the existing data, you need to create corresponding target ta
 
 After completing the prerequisites, you can sink your data to MySQL.
 
-1. Navigate to the overview page of the target <CustomContent plan="dedicated">{{{ .dedicated }}} cluster</CustomContent><CustomContent plan="premium,byoc">{{{ .premium }}} or {{{ .byoc }}} instance</CustomContent>, and then click **Data** > **Changefeed** in the left navigation pane.
+1. Navigate to the overview page of the target <CustomContent plan="dedicated">TiDB Cloud Dedicated cluster</CustomContent><CustomContent plan="premium,byoc">TiDB Cloud Premium or TiDB Cloud BYOC instance</CustomContent>, and then click **Data** > **Changefeed** in the left navigation pane.
 
 2. Click **Create Changefeed**, and select **MySQL** as **Destination**.
 
@@ -188,8 +186,6 @@ After completing the prerequisites, you can sink your data to MySQL.
     Click the changefeed name, and you can see more details about the changefeed, such as the checkpoint, replication latency, and other metrics.
 
 12. If you have [loaded the existing data](#load-existing-data-optional) using Dumpling, you need to restore the GC time to its original value (the default value is `10m`) after the sink is created:
-
-{{< copyable "sql" >}}
 
 ```sql
 SET GLOBAL tidb_gc_life_time = '10m';

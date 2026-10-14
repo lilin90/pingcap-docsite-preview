@@ -1,26 +1,26 @@
 ---
-title: Import CSV Files from Cloud Storage into {{{ .premium }}} or {{{ .byoc }}}
-summary: Learn how to import CSV files from Amazon Simple Storage Service (Amazon S3) into {{{ .premium }}} and {{{ .byoc }}} instances, and from Alibaba Cloud Object Storage Service (OSS) into {{{ .premium }}} instances.
+title: Import CSV Files from Cloud Storage into TiDB Cloud Premium or TiDB Cloud BYOC
+summary: Learn how to import CSV files from Amazon Simple Storage Service (Amazon S3) into TiDB Cloud Premium and TiDB Cloud BYOC instances, and from Alibaba Cloud Object Storage Service (OSS) into TiDB Cloud Premium instances.
 ---
 
-# Import CSV Files from Cloud Storage into {{{ .premium }}} or {{{ .byoc }}}
+# Import CSV Files from Cloud Storage into TiDB Cloud Premium or TiDB Cloud BYOC
 
-This document describes how to import CSV files from Amazon Simple Storage Service (Amazon S3) into {{{ .premium }}} and {{{ .byoc }}} instances, and from Alibaba Cloud Object Storage Service (OSS) into {{{ .premium }}} instances.
+This document describes how to import CSV files from Amazon Simple Storage Service (Amazon S3) into TiDB Cloud Premium and TiDB Cloud BYOC instances, and from Alibaba Cloud Object Storage Service (OSS) into TiDB Cloud Premium instances.
 
 > **Tip:**
 >
-> - For {{{ .starter }}} or Essential, see [Import CSV Files from Cloud Storage into {{{ .starter }}} or Essential](/tidb-cloud/import-csv-files-serverless.md).
-> - For {{{ .dedicated }}}, see [Import CSV Files from Cloud Storage into {{{ .dedicated }}}](/tidb-cloud/import-csv-files.md).
+> - For TiDB Cloud Starter or Essential, see [Import CSV Files from Cloud Storage into TiDB Cloud Starter or Essential](/tidb-cloud/import-csv-files-serverless.md).
+> - For TiDB Cloud Dedicated, see [Import CSV Files from Cloud Storage into TiDB Cloud Dedicated](/tidb-cloud/import-csv-files.md).
 
 ## Limitations
 
-To ensure data consistency, {{{ .premium }}} and {{{ .byoc }}} allow importing CSV files into empty tables only. To import data into an existing table that already contains data, you can import the data into a temporary empty table by following this document, and then use the `INSERT SELECT` statement to copy the data to the target existing table.
+To ensure data consistency, TiDB Cloud Premium and TiDB Cloud BYOC allow importing CSV files into empty tables only. To import data into an existing table that already contains data, you can import the data into a temporary empty table by following this document, and then use the `INSERT SELECT` statement to copy the data to the target existing table.
 
 <CustomContent plan="byoc">
 
 > **Note:**
 >
-> Currently, {{{ .byoc }}} does not support importing CSV files from Alibaba Cloud OSS.
+> Currently, TiDB Cloud BYOC does not support importing CSV files from Alibaba Cloud OSS.
 
 </CustomContent>
 
@@ -28,13 +28,13 @@ To ensure data consistency, {{{ .premium }}} and {{{ .byoc }}} allow importing C
 
 1. If a CSV file is larger than 256 MiB, consider splitting it into smaller files, each with a size around 256 MiB.
 
-    {{{ .premium }}} and {{{ .byoc }}} support importing very large CSV files but perform best with multiple input files around 256 MiB in size. This is because {{{ .premium }}} and {{{ .byoc }}} can process multiple files in parallel, which can greatly improve the import speed.
+    TiDB Cloud Premium and TiDB Cloud BYOC support importing very large CSV files but perform best with multiple input files around 256 MiB in size. This is because TiDB Cloud Premium and TiDB Cloud BYOC can process multiple files in parallel, which can greatly improve the import speed.
 
 2. Name the CSV files as follows:
 
     - If a CSV file contains all data of an entire table, name the file in the `${db_name}.${table_name}.csv` format, which maps to the `${db_name}.${table_name}` table when you import the data.
     - If the data of one table is separated into multiple CSV files, append a numeric suffix to these CSV files. For example, `${db_name}.${table_name}.000001.csv` and `${db_name}.${table_name}.000002.csv`. The numeric suffixes can be non-consecutive but must be in ascending order. You also need to add extra zeros before the number to ensure that all suffixes have the same length.
-    - {{{ .premium }}} and {{{ .byoc }}} support importing compressed files in the following formats: `.gzip`, `.gz`, `.zstd`, `.zst` and `.snappy`. If you want to import compressed CSV files, name the files in the `${db_name}.${table_name}.${suffix}.csv.${compress}` format, where `${suffix}` is optional and can be any integer such as '000001'. For example, if you want to import the `trips.000001.csv.gz` file to the `bikeshare.trips` table, you need to rename the file as `bikeshare.trips.000001.csv.gz`.
+    - TiDB Cloud Premium and TiDB Cloud BYOC support importing compressed files in the following formats: `.gzip`, `.gz`, `.zstd`, `.zst` and `.snappy`. If you want to import compressed CSV files, name the files in the `${db_name}.${table_name}.${suffix}.csv.${compress}` format, where `${suffix}` is optional and can be any integer such as '000001'. For example, if you want to import the `trips.000001.csv.gz` file to the `bikeshare.trips` table, you need to rename the file as `bikeshare.trips.000001.csv.gz`.
 
     > **Note:**
     >
@@ -44,9 +44,9 @@ To ensure data consistency, {{{ .premium }}} and {{{ .byoc }}} allow importing C
 
 ## Step 2. Create the target table schemas
 
-Because CSV files do not contain schema information, before importing data from CSV files into {{{ .premium }}} or {{{ .byoc }}}, you need to create the table schemas using either of the following methods:
+Because CSV files do not contain schema information, before importing data from CSV files into TiDB Cloud Premium or TiDB Cloud BYOC, you need to create the table schemas using either of the following methods:
 
-- Method 1: In {{{ .premium }}} or {{{ .byoc }}}, create the target databases and tables for your source data.
+- Method 1: In TiDB Cloud Premium or TiDB Cloud BYOC, create the target databases and tables for your source data.
 
 - Method 2: In the cloud storage directory where the CSV files are located, create the target table schema files for your source data as follows:
 
@@ -54,9 +54,9 @@ Because CSV files do not contain schema information, before importing data from 
 
         If your CSV files follow the naming rules in [Step 1](#step-1-prepare-the-csv-files), the database schema files are optional for the data import. Otherwise, the database schema files are mandatory.
 
-        Each database schema file must be in the `${db_name}-schema-create.sql` format and contain a `CREATE DATABASE` DDL statement. With this file, {{{ .premium }}} or {{{ .byoc }}} will create the `${db_name}` database to store your data when you import the data.
+        Each database schema file must be in the `${db_name}-schema-create.sql` format and contain a `CREATE DATABASE` DDL statement. With this file, TiDB Cloud Premium or TiDB Cloud BYOC will create the `${db_name}` database to store your data when you import the data.
 
-        For example, if you create a `mydb-schema-create.sql` file that contains the following statement, {{{ .premium }}} or {{{ .byoc }}} will create the `mydb` database when you import the data.
+        For example, if you create a `mydb-schema-create.sql` file that contains the following statement, TiDB Cloud Premium or TiDB Cloud BYOC will create the `mydb` database when you import the data.
 
         ```sql
         CREATE DATABASE mydb;
@@ -64,11 +64,11 @@ Because CSV files do not contain schema information, before importing data from 
 
     2. Create table schema files for your source data.
 
-        If you do not include the table schema files in the cloud storage directory where the CSV files are located, {{{ .premium }}} or {{{ .byoc }}} will not create the corresponding tables for you when you import the data.
+        If you do not include the table schema files in the cloud storage directory where the CSV files are located, TiDB Cloud Premium or TiDB Cloud BYOC will not create the corresponding tables for you when you import the data.
 
-        Each table schema file must be in the `${db_name}.${table_name}-schema.sql` format and contain a `CREATE TABLE` DDL statement. With this file, {{{ .premium }}} or {{{ .byoc }}} will create the `${table_name}` table in the `${db_name}` database when you import the data.
+        Each table schema file must be in the `${db_name}.${table_name}-schema.sql` format and contain a `CREATE TABLE` DDL statement. With this file, TiDB Cloud Premium or TiDB Cloud BYOC will create the `${table_name}` table in the `${db_name}` database when you import the data.
 
-        For example, if you create a `mydb.mytable-schema.sql` file that contains the following statement, {{{ .premium }}} or {{{ .byoc }}} will create the `mytable` table in the `mydb` database when you import the data.
+        For example, if you create a `mydb.mytable-schema.sql` file that contains the following statement, TiDB Cloud Premium or TiDB Cloud BYOC will create the `mytable` table in the `mydb` database when you import the data.
 
         ```sql
         CREATE TABLE mytable (
@@ -83,40 +83,40 @@ Because CSV files do not contain schema information, before importing data from 
 
 ## Step 3. Configure cross-account access
 
-To allow {{{ .premium }}} or {{{ .byoc }}} to access CSV files in cloud storage, configure cross-account access for the applicable storage provider:
+To allow TiDB Cloud Premium or TiDB Cloud BYOC to access CSV files in cloud storage, configure cross-account access for the applicable storage provider:
 
-- If your CSV files are located in Amazon S3, [configure Amazon S3 access](/tidb-cloud/configure-external-storage-access.md#configure-amazon-s3-access) for your {{{ .premium }}} or {{{ .byoc }}} instance.
+- If your CSV files are located in Amazon S3, [configure Amazon S3 access](/tidb-cloud/configure-external-storage-access.md#configure-amazon-s3-access) for your TiDB Cloud Premium or TiDB Cloud BYOC instance.
 
     You can use either an AWS access key or a Role ARN to access your bucket. Once finished, make a note of the access key (including the access key ID and secret access key) or the Role ARN value as you will need it in [Step 4](#step-4-import-csv-files).
 
     <CustomContent plan="byoc">
 
-    For {{{ .byoc }}}, if you use an AWS Role ARN, make sure the IAM role has the tag `tidbcloud.com/allow-dataplane-access=true` before starting the import.
+    For TiDB Cloud BYOC, if you use an AWS Role ARN, make sure the IAM role has the tag `tidbcloud.com/allow-dataplane-access=true` before starting the import.
 
     </CustomContent>
 
 <CustomContent plan="premium">
 
-- If your CSV files are located in Alibaba Cloud Object Storage Service (OSS), [configure Alibaba Cloud Object Storage Service (OSS) access](/tidb-cloud/configure-external-storage-access.md#configure-alibaba-cloud-object-storage-service-oss-access) for your {{{ .premium }}} instance.
+- If your CSV files are located in Alibaba Cloud Object Storage Service (OSS), [configure Alibaba Cloud Object Storage Service (OSS) access](/tidb-cloud/configure-external-storage-access.md#configure-alibaba-cloud-object-storage-service-oss-access) for your TiDB Cloud Premium instance.
 
 </CustomContent>
 
 ## Step 4. Import CSV files
 
-To import the CSV files to {{{ .premium }}} or {{{ .byoc }}}, take the following steps:
+To import the CSV files to TiDB Cloud Premium or TiDB Cloud BYOC, take the following steps:
 
 <SimpleTab>
 <div label="Amazon S3">
 
-1. Open the **Import** page for your target {{{ .premium }}} or {{{ .byoc }}} instance.
+1. Open the **Import** page for your target TiDB Cloud Premium or TiDB Cloud BYOC instance.
 
-    1. Log in to the [TiDB Cloud console](https://tidbcloud.com/) and navigate to the [**My TiDB**](https://tidbcloud.com/tidbs) page for your target {{{ .premium }}} or {{{ .byoc }}} instance.
+    1. Log in to the [TiDB Cloud console](https://tidbcloud.com/) and navigate to the [**My TiDB**](https://tidbcloud.com/tidbs) page for your target TiDB Cloud Premium or TiDB Cloud BYOC instance.
 
         > **Tip:**
         >
         > If you are in multiple organizations, use the combo box in the upper-left corner to switch to your target organization first.
 
-    2. Click the name of your target {{{ .premium }}} or {{{ .byoc }}} instance to go to its overview page, and then click **Data** > **Import** in the left navigation pane.
+    2. Click the name of your target TiDB Cloud Premium or TiDB Cloud BYOC instance to go to its overview page, and then click **Data** > **Import** in the left navigation pane.
 
 2. Click **Import data from Cloud Storage**.
 
@@ -129,20 +129,20 @@ To import the CSV files to {{{ .premium }}} or {{{ .byoc }}}, take the following
     - **Credential**: you can use either an AWS Role ARN or an AWS access key to access your bucket. For more information, see [Configure Amazon S3 access](/tidb-cloud/configure-external-storage-access.md#configure-amazon-s3-access).
         - **AWS Role ARN**: enter the AWS Role ARN value. If you need to create a new role, click **Click here to create a new one with AWS CloudFormation** and follow the guided steps to launch the provided template, acknowledge the IAM warning, create the stack, and copy the generated ARN back into TiDB Cloud.
         - **AWS Access Key**: enter the AWS access key ID and AWS secret access key.
-    - **Test Bucket Access**: click this button after the credentials are in place to confirm that {{{ .premium }}} or {{{ .byoc }}} can reach the bucket.
+    - **Test Bucket Access**: click this button after the credentials are in place to confirm that TiDB Cloud Premium or TiDB Cloud BYOC can reach the bucket.
     - **Target Connection**: provide the TiDB username and password that will run the import. Optionally, click **Test Connection** to validate the credentials.
 
 4. Click **Next**.
 
-5. In the **Source Files Mapping** section, {{{ .premium }}} or {{{ .byoc }}} scans the bucket and proposes mappings between the source files and destination tables.
+5. In the **Source Files Mapping** section, TiDB Cloud Premium or TiDB Cloud BYOC scans the bucket and proposes mappings between the source files and destination tables.
 
     When a directory is specified in **Source Files URI**, the **Use [File naming conventions](/tidb-cloud/naming-conventions-for-data-import.md) for automatic mapping** option is selected by default.
 
     > **Note:**
     >
-    > When a single file is specified in **Source Files URI**, the **Use [File naming conventions](/tidb-cloud/naming-conventions-for-data-import.md) for automatic mapping** option is not displayed, and {{{ .premium }}} or {{{ .byoc }}} automatically populates the **Source** field with the file name. In this case, you only need to select the target database and table for data import.
+    > When a single file is specified in **Source Files URI**, the **Use [File naming conventions](/tidb-cloud/naming-conventions-for-data-import.md) for automatic mapping** option is not displayed, and TiDB Cloud Premium or TiDB Cloud BYOC automatically populates the **Source** field with the file name. In this case, you only need to select the target database and table for data import.
 
-    - Leave automatic mapping enabled to apply the [file naming conventions](/tidb-cloud/naming-conventions-for-data-import.md) to your source files and target tables in your {{{ .premium }}} or {{{ .byoc }}} instance. Keep **CSV** selected as the data format.
+    - Leave automatic mapping enabled to apply the [file naming conventions](/tidb-cloud/naming-conventions-for-data-import.md) to your source files and target tables in your TiDB Cloud Premium or TiDB Cloud BYOC instance. Keep **CSV** selected as the data format.
 
     - **Advanced options**: expand the panel to view the `Ignore compatibility checks (advanced)` toggle. Leave it disabled unless you intentionally want to bypass schema compatibility validation.
 
@@ -154,7 +154,7 @@ To import the CSV files to {{{ .premium }}} or {{{ .byoc }}}, take the following
     > - **Source**: enter a filename pattern such as `TableName.01.csv`. Wildcards `*` and `?` are supported (for example, `my-data*.csv`).
     > - **Target Database** and **Target Table**: choose the destination objects for the matched files.
 
-6. {{{ .premium }}} or {{{ .byoc }}} automatically scans the source path. Review the scan results, check the data files found and corresponding target tables, and then click **Start Import**.
+6. TiDB Cloud Premium or TiDB Cloud BYOC automatically scans the source path. Review the scan results, check the data files found and corresponding target tables, and then click **Start Import**.
 
 7. When the import progress shows **Completed**, check the imported tables.
 
@@ -164,7 +164,7 @@ To import the CSV files to {{{ .premium }}} or {{{ .byoc }}}, take the following
 
 <div label="Alibaba Cloud Object Storage Service (OSS)">
 
-1. Open the **Import** page for your target {{{ .premium }}} instance.
+1. Open the **Import** page for your target TiDB Cloud Premium instance.
 
     1. Log in to the [TiDB Cloud console](https://tidbcloud.com/) and navigate to the [**My TiDB**](https://tidbcloud.com/tidbs) page.
 
@@ -172,7 +172,7 @@ To import the CSV files to {{{ .premium }}} or {{{ .byoc }}}, take the following
         >
         > If you are in multiple organizations, use the combo box in the upper-left corner to switch to your target organization first.
 
-    2. Click the name of your target {{{ .premium }}} instance to go to its overview page, and then click **Data** > **Import** in the left navigation pane.
+    2. Click the name of your target TiDB Cloud Premium instance to go to its overview page, and then click **Data** > **Import** in the left navigation pane.
 
 2. Click **Import data from Cloud Storage**.
 
@@ -183,18 +183,18 @@ To import the CSV files to {{{ .premium }}} or {{{ .byoc }}}, take the following
         - When importing one file, enter the source file URI in the following format `oss://[bucket_name]/[data_source_folder]/[file_name].csv`. For example, `oss://sampledata/ingest/TableName.01.csv`.
         - When importing multiple files, enter the source folder URI in the following format `oss://[bucket_name]/[data_source_folder]/`. For example, `oss://sampledata/ingest/`.
     - **Credential**: you can use an AccessKey pair to access your bucket. For more information, see [Configure Alibaba Cloud Object Storage Service (OSS) access](/tidb-cloud/configure-external-storage-access.md#configure-alibaba-cloud-object-storage-service-oss-access).
-    - **Test Bucket Access**: click this button after the credentials are in place to confirm that {{{ .premium }}} can reach the bucket.
+    - **Test Bucket Access**: click this button after the credentials are in place to confirm that TiDB Cloud Premium can reach the bucket.
     - **Target Connection**: provide the TiDB username and password that will run the import. Optionally, click **Test Connection** to validate the credentials.
 
 4. Click **Next**.
 
-5. In the **Source Files Mapping** section, {{{ .premium }}} scans the bucket and proposes mappings between the source files and destination tables.
+5. In the **Source Files Mapping** section, TiDB Cloud Premium scans the bucket and proposes mappings between the source files and destination tables.
 
     When a directory is specified in **Source Files URI**, the **Use [File naming conventions](/tidb-cloud/naming-conventions-for-data-import.md) for automatic mapping** option is selected by default.
 
     > **Note:**
     >
-    > When a single file is specified in **Source Files URI**, the **Use [File naming conventions](/tidb-cloud/naming-conventions-for-data-import.md) for automatic mapping** option is not displayed, and {{{ .premium }}} automatically populates the **Source** field with the file name. In this case, you only need to select the target database and table for data import.
+    > When a single file is specified in **Source Files URI**, the **Use [File naming conventions](/tidb-cloud/naming-conventions-for-data-import.md) for automatic mapping** option is not displayed, and TiDB Cloud Premium automatically populates the **Source** field with the file name. In this case, you only need to select the target database and table for data import.
 
     - Leave automatic mapping enabled to apply the [file naming conventions](/tidb-cloud/naming-conventions-for-data-import.md) to your source files and target tables. Keep **CSV** selected as the data format.
 
@@ -208,7 +208,7 @@ To import the CSV files to {{{ .premium }}} or {{{ .byoc }}}, take the following
     > - **Source**: enter a filename pattern such as `TableName.01.csv`. Wildcards `*` and `?` are supported (for example, `my-data*.csv`).
     > - **Target Database** and **Target Table**: choose the destination objects for the matched files.
 
-6. {{{ .premium }}} automatically scans the source path. Review the scan results, check the data files found and corresponding target tables, and then click **Start Import**.
+6. TiDB Cloud Premium automatically scans the source path. Review the scan results, check the data files found and corresponding target tables, and then click **Start Import**.
 
 7. When the import progress shows **Completed**, check the imported tables.
 
@@ -218,7 +218,7 @@ To import the CSV files to {{{ .premium }}} or {{{ .byoc }}}, take the following
 
 </SimpleTab>
 
-When you run an import task, if any unsupported or invalid conversions are detected, {{{ .premium }}} or {{{ .byoc }}} terminates the import job automatically and reports an importing error.
+When you run an import task, if any unsupported or invalid conversions are detected, TiDB Cloud Premium or TiDB Cloud BYOC terminates the import job automatically and reports an importing error.
 
 If you get an importing error, do the following:
 

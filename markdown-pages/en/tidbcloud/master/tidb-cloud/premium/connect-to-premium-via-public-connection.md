@@ -1,11 +1,11 @@
 ---
-title: Connect to {{{ .premium }}} or {{{ .byoc }}} via Public Connection
-summary: Learn how to connect to your {{{ .premium }}} or {{{ .byoc }}} via public connection.
+title: Connect to TiDB Cloud Premium or TiDB Cloud BYOC via Public Connection
+summary: Learn how to connect to your TiDB Cloud Premium or TiDB Cloud BYOC via public connection.
 ---
 
-# Connect to {{{ .premium }}} or {{{ .byoc }}} via Public Connection
+# Connect to TiDB Cloud Premium or TiDB Cloud BYOC via Public Connection
 
-This document describes how to connect to your {{{ .premium }}} or {{{ .byoc }}} instance via public connection. The public connection exposes a public endpoint with traffic filters, so you can connect to your {{{ .premium }}} or {{{ .byoc }}} instance via a SQL client from your laptop.
+This document describes how to connect to your TiDB Cloud Premium or TiDB Cloud BYOC instance via public connection. The public connection exposes a public endpoint with traffic filters, so you can connect to your TiDB Cloud Premium or TiDB Cloud BYOC instance via a SQL client from your laptop.
 
 <CustomContent plan="byoc">
 
@@ -17,7 +17,7 @@ This document describes how to connect to your {{{ .premium }}} or {{{ .byoc }}}
 
 > **Tip:**
 >
-> - To learn how to connect to a {{{ .starter }}} or {{{ .essential }}} instance via public connection, see [Connect to {{{ .starter }}} or Essential via Public Endpoint](/tidb-cloud/connect-via-standard-connection-serverless.md).
+> - To learn how to connect to a TiDB Cloud Starter or TiDB Cloud Essential instance via public connection, see [Connect to TiDB Cloud Starter or Essential via Public Endpoint](/tidb-cloud/connect-via-standard-connection-serverless.md).
 > - To learn how to connect to a TiDB Cloud Dedicated cluster via public endpoint, see [Connect to TiDB Cloud Dedicated via Public Connection](/tidb-cloud/connect-via-standard-connection.md).
 
 ## Prerequisite: Configure IP access list
@@ -46,7 +46,7 @@ To connect to your instance via public connection, take the following steps:
 
     If you have not configured the IP access list, click **Configure IP Access List** or follow the steps in [Configure an IP Access List](/tidb-cloud/premium/configure-ip-access-list-premium.md) to configure it before your first connection.
 
-4. Click **CA cert** to download CA cert for TLS connection to {{{ .premium }}} instances. The CA cert supports TLS 1.2 by default.
+4. Click **CA cert** to download CA cert for TLS connection to TiDB Cloud Premium instances. The CA cert supports TLS 1.2 by default.
 
 5. Choose your preferred connection method, and then refer to the connection string and sample code on the tab to connect to your instance.
 
@@ -76,4 +76,4 @@ To connect to your instance via public connection, take the following steps:
 
 ## What's next
 
-After you have successfully connected to your {{{ .premium }}} or {{{ .byoc }}} instance, you can [explore SQL statements with TiDB](/basic-sql-operations.md).
+After you have successfully connected to your TiDB Cloud Premium or TiDB Cloud BYOC instance, you can [explore SQL statements with TiDB](/basic-sql-operations.md).

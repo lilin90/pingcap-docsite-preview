@@ -13,23 +13,23 @@ TiDB Cloud charges according to the resources that you consume.
 
 See [TiDB Cloud Dedicated Pricing Details](https://www.pingcap.com/tidb-dedicated-pricing-details/).
 
-### Pricing for {{{ .starter }}} {#pricing-for-starter}
+### Pricing for TiDB Cloud Starter {#pricing-for-starter}
 
-See [{{{ .starter }}} Pricing Details](https://www.pingcap.com/tidb-cloud-starter-pricing-details/).
+See [TiDB Cloud Starter Pricing Details](https://www.pingcap.com/tidb-cloud-starter-pricing-details/).
 
-### Pricing for {{{ .essential }}} {#pricing-for-essential}
+### Pricing for TiDB Cloud Essential {#pricing-for-essential}
 
-For {{{ .essential }}}, you are charged based on the number of provisioned Request Capacity Units (RCUs), **not** on the actual usage by your application. See [{{{ .essential }}} Pricing Details](https://www.pingcap.com/tidb-cloud-essential-pricing-details/).
+For TiDB Cloud Essential, you are charged based on the number of provisioned Request Capacity Units (RCUs), **not** on the actual usage by your application. See [TiDB Cloud Essential Pricing Details](https://www.pingcap.com/tidb-cloud-essential-pricing-details/).
 
-### Pricing for {{{ .premium }}} {#pricing-for-premium}
+### Pricing for TiDB Cloud Premium {#pricing-for-premium}
 
-For {{{ .premium }}}, you are billed based on the actual [Request Capacity Unit (RCU)](/tidb-cloud/tidb-cloud-glossary.md#request-capacity-unit-rcu) consumption and the storage that you actually use, rather than the underlying backend nodes or provisioned disk size. See [{{{ .premium }}} Pricing Details](https://www.pingcap.com/tidb-cloud-premium-pricing-details/).
+For TiDB Cloud Premium, you are billed based on the actual [Request Capacity Unit (RCU)](/tidb-cloud/tidb-cloud-glossary.md#request-capacity-unit-rcu) consumption and the storage that you actually use, rather than the underlying backend nodes or provisioned disk size. See [TiDB Cloud Premium Pricing Details](https://www.pingcap.com/tidb-cloud-premium-pricing-details/).
 
-### Pricing for {{{ .byoc }}} {#pricing-for-byoc}
+### Pricing for TiDB Cloud BYOC {#pricing-for-byoc}
 
-For pricing information about {{{ .byoc }}}, contact [TiDB Cloud Support](/tidb-cloud/tidb-cloud-support.md).
+For pricing information about TiDB Cloud BYOC, contact [TiDB Cloud Support](/tidb-cloud/tidb-cloud-support.md).
 
-### Pricing for {{{ .lake }}} {#pricing-for-lake}
+### Pricing for TiDB Cloud Lake {#pricing-for-lake}
 
 For TiDB Cloud Lake, your costs consist of warehouse, storage, and cloud service fees. For details, see [TiDB Cloud Lake Pricing & Billing](https://docs.pingcap.com/tidbcloudlake/pricing-billing/).
 

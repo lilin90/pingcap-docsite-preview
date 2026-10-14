@@ -13,12 +13,12 @@ In the [TiDB Cloud console](https://tidbcloud.com/), you can discover, access, a
 
 A TiDB Cloud resource is a deployable unit that you can manage. It can be one of the following:
 
-- A TiDB X instance, which is a service-oriented TiDB Cloud offering built on the [TiDB X architecture](/tidb-cloud/tidb-x-architecture.md), such as a {{{ .starter }}}, Essential, Premium, or BYOC instance
-- A {{{ .dedicated }}} cluster
+- A TiDB X instance, which is a service-oriented TiDB Cloud offering built on the [TiDB X architecture](/tidb-cloud/tidb-x-architecture.md), such as a TiDB Cloud Starter, Essential, Premium, or BYOC instance
+- A TiDB Cloud Dedicated cluster
 
 <CustomContent plan="byoc">
 
-In {{{ .byoc }}}, a resource pool is an organization-level BYOC resource that provides the underlying physical resources, network, and capacity for BYOC instances. Resource pools are managed from **BYOC Management** > **Resource Pools** and are not associated with projects. For more information, see [Manage Resource Pools](/tidb-cloud/byoc/manage-resource-pools-byoc.md).
+In TiDB Cloud BYOC, a resource pool is an organization-level BYOC resource that provides the underlying physical resources, network, and capacity for BYOC instances. Resource pools are managed from **BYOC Management** > **Resource Pools** and are not associated with projects. For more information, see [Manage Resource Pools](/tidb-cloud/byoc/manage-resource-pools-byoc.md).
 
 </CustomContent>
 
@@ -27,7 +27,7 @@ In {{{ .byoc }}}, a resource pool is an organization-level BYOC resource that pr
 In TiDB Cloud, you can use [projects](/tidb-cloud/tidb-cloud-glossary.md#project) to organize and manage your TiDB Cloud resources.
 
 - For TiDB X instances, projects are optional, which means you can either group these instances in a project or keep them at the organization level.
-- For {{{ .dedicated }}} clusters, projects are required.
+- For TiDB Cloud Dedicated clusters, projects are required.
 
 ## Manage TiDB Cloud resources
 
@@ -47,13 +47,13 @@ To create a TiDB Cloud resource, navigate to the [**My TiDB**](https://tidbcloud
 
 For more information, see the following documents:
 
-- [Create a {{{ .starter }}} or Essential Instance](/tidb-cloud/create-tidb-cluster-serverless.md)
+- [Create a TiDB Cloud Starter or Essential Instance](/tidb-cloud/create-tidb-cluster-serverless.md)
 
-- [Create a {{{ .premium }}} Instance](/tidb-cloud/premium/create-tidb-instance-premium.md)
+- [Create a TiDB Cloud Premium Instance](/tidb-cloud/premium/create-tidb-instance-premium.md)
 
-- [Create a {{{ .byoc }}} Instance](/tidb-cloud/byoc/create-tidb-instance-byoc.md)
+- [Create a TiDB Cloud BYOC Instance](/tidb-cloud/byoc/create-tidb-instance-byoc.md)
 
-- [Create a {{{ .dedicated }}} Cluster](/tidb-cloud/create-tidb-cluster.md)
+- [Create a TiDB Cloud Dedicated Cluster](/tidb-cloud/create-tidb-cluster.md)
 
 ### Manage TiDB Cloud resources
 
@@ -106,7 +106,7 @@ To create a new project, take the following steps:
 
         > **Note:**
         >
-        > For {{{ .premium }}} instances, encryption is configured per instance rather than per project. After you create the instance, you can enable [Dual-Layer Data Encryption](/tidb-cloud/premium/dual-layer-data-encryption-premium.md) to add a database-layer encryption on top of the default storage-layer encryption.
+        > For TiDB Cloud Premium instances, encryption is configured per instance rather than per project. After you create the instance, you can enable [Dual-Layer Data Encryption](/tidb-cloud/premium/dual-layer-data-encryption-premium.md) to add a database-layer encryption on top of the default storage-layer encryption.
 
         </CustomContent>
 
@@ -114,12 +114,12 @@ To create a new project, take the following steps:
 
         > **Note:**
         >
-        > - For {{{ .byoc }}} instances, projects are optional. The data plane runs in your own cloud account, and BYOC environment-level settings are configured during BYOC onboarding.
-        > - For {{{ .premium }}} instances, encryption is configured per instance rather than per project. After you create the instance, you can enable [Dual-Layer Data Encryption](/tidb-cloud/premium/dual-layer-data-encryption-premium.md) to add a database-layer encryption on top of the default storage-layer encryption.
+        > - For TiDB Cloud BYOC instances, projects are optional. The data plane runs in your own cloud account, and BYOC environment-level settings are configured during BYOC onboarding.
+        > - For TiDB Cloud Premium instances, encryption is configured per instance rather than per project. After you create the instance, you can enable [Dual-Layer Data Encryption](/tidb-cloud/premium/dual-layer-data-encryption-premium.md) to add a database-layer encryption on top of the default storage-layer encryption.
 
         </CustomContent>
 
-    - If the project is created for {{{ .dedicated }}} clusters, select the **Create for Dedicated Cluster** option, configure [Customer-Managed Encryption Keys (CMEK)](/tidb-cloud/tidb-cloud-encrypt-cmek-aws.md) and [maintenance window](/tidb-cloud/configure-maintenance-window.md) for the project, and then click **Confirm**.
+    - If the project is created for TiDB Cloud Dedicated clusters, select the **Create for Dedicated Cluster** option, configure [Customer-Managed Encryption Keys (CMEK)](/tidb-cloud/tidb-cloud-encrypt-cmek-aws.md) and [maintenance window](/tidb-cloud/configure-maintenance-window.md) for the project, and then click **Confirm**.
 
 ### Manage a project
 
@@ -136,7 +136,7 @@ To manage a project, take the following steps:
 2. In the project view, locate your target project, and then manage it as follows:
 
     - For both TiDB X and TiDB Dedicated projects, you can click **...** in the row of the target project to perform quick actions on a project, such as renaming the project or inviting members to the project. For more information, see [Manage project access](/tidb-cloud/manage-user-access.md).
-    - For TiDB Dedicated projects, you can also click the <MDSvgIcon name="icon-project-settings" /> icon in the row of the target project to manage settings, such as networking, maintenance, alert subscriptions, and encryption access, for {{{ .dedicated }}} clusters by project.
+    - For TiDB Dedicated projects, you can also click the <MDSvgIcon name="icon-project-settings" /> icon in the row of the target project to manage settings, such as networking, maintenance, alert subscriptions, and encryption access, for TiDB Cloud Dedicated clusters by project.
 
 ### Move a TiDB X instance between projects
 

@@ -109,7 +109,7 @@ To check or upgrade your support plan, perform the following steps:
 
     On this page, you can find your current plan. By default, the **Basic** free plan is selected.
 
-    For {{{ .byoc }}}, **Enterprise** is the minimum required support plan.
+    For TiDB Cloud BYOC, **Enterprise** is the minimum required support plan.
 
 2. Choose your desired support plan.
 
@@ -146,4 +146,4 @@ To downgrade your support plan, perform the following steps:
 1. In the [TiDB Cloud console](https://tidbcloud.com/), click **Support** in the lower-left corner.
 2. Choose the support plan you want to switch to, and then click **Downgrade**.
 
-    For {{{ .byoc }}}, you can downgrade only to **Enterprise** or a higher support plan.
+    For TiDB Cloud BYOC, you can downgrade only to **Enterprise** or a higher support plan.

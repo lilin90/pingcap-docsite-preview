@@ -1,15 +1,15 @@
 ---
-title: Connect to {{{ .premium }}} or {{{ .byoc }}} via AWS PrivateLink
-summary: Learn how to connect to your {{{ .premium }}} or {{{ .byoc }}} instance via private endpoint with AWS.
+title: Connect to TiDB Cloud Premium or TiDB Cloud BYOC via AWS PrivateLink
+summary: Learn how to connect to your TiDB Cloud Premium or TiDB Cloud BYOC instance via private endpoint with AWS.
 ---
 
-# Connect to {{{ .premium }}} or {{{ .byoc }}} via AWS PrivateLink
+# Connect to TiDB Cloud Premium or TiDB Cloud BYOC via AWS PrivateLink
 
-This document describes how to connect to your {{{ .premium }}} or {{{ .byoc }}} instance via [AWS PrivateLink](https://aws.amazon.com/privatelink).
+This document describes how to connect to your TiDB Cloud Premium or TiDB Cloud BYOC instance via [AWS PrivateLink](https://aws.amazon.com/privatelink).
 
 > **Tip:**
 >
-> To learn how to connect to a {{{ .starter }}} or {{{ .essential }}} instance via AWS PrivateLink, see [Connect to {{{ .starter }}} or Essential via AWS PrivateLink](/tidb-cloud/set-up-private-endpoint-connections-serverless.md).
+> To learn how to connect to a TiDB Cloud Starter or TiDB Cloud Essential instance via AWS PrivateLink, see [Connect to TiDB Cloud Starter or Essential via AWS PrivateLink](/tidb-cloud/set-up-private-endpoint-connections-serverless.md).
 
 TiDB Cloud supports highly secure and one-way access to the TiDB Cloud service hosted in an AWS VPC via [AWS PrivateLink](https://aws.amazon.com/privatelink), as if the service were in your own VPC. A private endpoint is exposed in your VPC and you can create a connection to the TiDB Cloud service via the endpoint with permission.
 
@@ -27,7 +27,7 @@ For more detailed definitions of the private endpoint and endpoint service, see 
 ## Restrictions
 
 - Only users with the `Organization Owner`, `Project Owner`, or `Instance Owner` role of the target instance can create private endpoint connections.
-- The private endpoint and the {{{ .premium }}} or {{{ .byoc }}} instance you want to connect to must be located in the **same region**.
+- The private endpoint and the TiDB Cloud Premium or TiDB Cloud BYOC instance you want to connect to must be located in the **same region**.
 
 ## Prerequisites
 
@@ -35,19 +35,19 @@ Make sure that DNS hostnames and DNS resolution are both enabled in your AWS VPC
 
 ## Set up a private endpoint connection and connect to your instance
 
-To connect to your {{{ .premium }}} or {{{ .byoc }}} instance via a private endpoint, follow these steps:
+To connect to your TiDB Cloud Premium or TiDB Cloud BYOC instance via a private endpoint, follow these steps:
 
 1. [Open the private endpoint connection dialog](#step-1-open-the-private-endpoint-connection-dialog)
 2. [Create a VPC endpoint in AWS](#step-2-create-a-vpc-endpoint-in-aws)
 3. [Enter the VPC endpoint ID in TiDB Cloud](#step-3-enter-the-vpc-endpoint-id-in-tidb-cloud)
 4. [Enable private DNS](#step-4-enable-private-dns)
-5. [Connect to your {{{ .premium }}} or {{{ .byoc }}} instance](#step-5-connect-to-your-premium-or-byoc-instance)
+5. [Connect to your TiDB Cloud Premium or TiDB Cloud BYOC instance](#step-5-connect-to-your-premium-or-byoc-instance)
 
 If you have multiple instances, you need to repeat these steps for each instance that you want to connect to using AWS PrivateLink.
 
 ### Step 1. Open the private endpoint connection dialog
 
-1. On the [**My TiDB**](https://tidbcloud.com/tidbs) page of your TiDB Cloud console, click the name of your target {{{ .premium }}} or {{{ .byoc }}} instance to go to its overview page.
+1. On the [**My TiDB**](https://tidbcloud.com/tidbs) page of your TiDB Cloud console, click the name of your target TiDB Cloud Premium or TiDB Cloud BYOC instance to go to its overview page.
 2. Click **Connect** in the upper-right corner. A connection dialog is displayed.
 3. In the **Connection Type** drop-down list, select **Private Endpoint**, and then click **Create Private Endpoint Connection**.
 4. In the **Create AWS Private Endpoint Connection** dialog, wait until the `TiDB Private Link Service is ready` message is displayed.
@@ -56,7 +56,7 @@ If you have multiple instances, you need to repeat these steps for each instance
 > **Note:**
 >
 > - If you have already created a private endpoint connection, the active endpoint will appear in the connection dialog. To create additional private endpoint connections, navigate to the **Networking** page by clicking **Settings** > **Networking** in the left navigation pane.
-> - For each {{{ .premium }}} or {{{ .byoc }}} instance, the corresponding endpoint service is automatically created 3 to 4 minutes after the instance creation.
+> - For each TiDB Cloud Premium or TiDB Cloud BYOC instance, the corresponding endpoint service is automatically created 3 to 4 minutes after the instance creation.
 
 ### Step 2. Create a VPC endpoint in AWS
 
@@ -88,7 +88,7 @@ To create a VPC endpoint using the AWS CLI, perform the following steps:
 >
 > - Before running the command, you need to have AWS CLI installed and configured. See [AWS CLI configuration basics](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) for details.
 >
-> - If your service spans across more than three availability zones (AZs), you will get an error message indicating that the VPC endpoint service does not support the AZ of the subnet. This issue occurs when there is an extra AZ in your selected region in addition to the AZs where your {{{ .premium }}} or {{{ .byoc }}} instance is located. In this case, you can contact [PingCAP Technical Support](https://docs.pingcap.com/tidbcloud/tidb-cloud-support).
+> - If your service spans across more than three availability zones (AZs), you will get an error message indicating that the VPC endpoint service does not support the AZ of the subnet. This issue occurs when there is an extra AZ in your selected region in addition to the AZs where your TiDB Cloud Premium or TiDB Cloud BYOC instance is located. In this case, you can contact [PingCAP Technical Support](https://docs.pingcap.com/tidbcloud/tidb-cloud-support).
 
 </div>
 <div label="Use AWS Console">
@@ -106,11 +106,11 @@ To create a VPC endpoint using the AWS Management Console, perform the following
 4. In the **Service settings** area, enter the **Endpoint Service Name** copied from TiDB Cloud.
 5. Click **Verify service**.
 6. In the **Network settings** area, select your VPC in the drop-down list.
-7. In the **Subnets** area, select the availability zones where your {{{ .premium }}} or {{{ .byoc }}} instance is located.
+7. In the **Subnets** area, select the availability zones where your TiDB Cloud Premium or TiDB Cloud BYOC instance is located.
 
     > **Tip:**
     >
-    > If your service spans across more than three availability zones (AZs), you might not be able to select AZs in the **Subnets** area. This issue occurs when there is an extra AZ in your selected region in addition to the AZs where your {{{ .premium }}} or {{{ .byoc }}} instance is located. In this case, contact [PingCAP Technical Support](https://docs.pingcap.com/tidbcloud/tidb-cloud-support).
+    > If your service spans across more than three availability zones (AZs), you might not be able to select AZs in the **Subnets** area. This issue occurs when there is an extra AZ in your selected region in addition to the AZs where your TiDB Cloud Premium or TiDB Cloud BYOC instance is located. In this case, contact [PingCAP Technical Support](https://docs.pingcap.com/tidbcloud/tidb-cloud-support).
 
 8. In the **Security groups** area, select your security group properly.
 
@@ -132,7 +132,7 @@ To create a VPC endpoint using the AWS Management Console, perform the following
 
 > **Tip:**
 >
-> You can view and manage private endpoint connections on the **Networking** page of your target {{{ .premium }}} or {{{ .byoc }}} instance. To access this page, click **Settings** > **Networking** in the left navigation pane.
+> You can view and manage private endpoint connections on the **Networking** page of your target TiDB Cloud Premium or TiDB Cloud BYOC instance. To access this page, click **Settings** > **Networking** in the left navigation pane.
 
 ### Step 4. Enable private DNS
 
@@ -172,7 +172,7 @@ To enable private DNS in your AWS Management Console:
 </div>
 </SimpleTab>
 
-### Step 5. Connect to your {{{ .premium }}} or {{{ .byoc }}} instance {#step-5-connect-to-your-premium-or-byoc-instance}
+### Step 5. Connect to your TiDB Cloud Premium or TiDB Cloud BYOC instance {#step-5-connect-to-your-premium-or-byoc-instance}
 
 After the private endpoint connection is created, you are redirected back to the connection dialog.
 
@@ -194,7 +194,7 @@ After the private endpoint connection is created, you are redirected back to the
 
 When you use private endpoint connections, the statuses of private endpoints and private endpoint services are displayed on the instance-level **Networking** page:
 
-1. Navigate to the [**My TiDB**](https://tidbcloud.com/tidbs) page of your organization, and then click the name of your target {{{ .premium }}} or {{{ .byoc }}} instance to go to its overview page.
+1. Navigate to the [**My TiDB**](https://tidbcloud.com/tidbs) page of your organization, and then click the name of your target TiDB Cloud Premium or TiDB Cloud BYOC instance to go to its overview page.
 2. Click **Settings** > **Networking** in the left navigation pane.
 
 The possible statuses of a private endpoint are explained as follows:
@@ -213,7 +213,7 @@ The possible statuses of a private endpoint service are explained as follows:
 
 ## Troubleshooting
 
-### I cannot connect to a {{{ .premium }}} or {{{ .byoc }}} instance via a private endpoint after enabling private DNS. Why?
+### I cannot connect to a TiDB Cloud Premium or TiDB Cloud BYOC instance via a private endpoint after enabling private DNS. Why?
 
 You might need to properly set the security group for your VPC endpoint in the AWS Management Console. To do so, go to **VPC** > **Endpoints**, right-click your VPC endpoint, and select **Manage security groups**. Ensure that the selected security group allows inbound access from your EC2 instances on port `4000` or a customer-defined port.
 
